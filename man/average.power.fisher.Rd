@@ -7,9 +7,9 @@
 average.power.fisher(p1, p2, n, alpha, alternative)
 }
 \arguments{
-\item{p1}{probability of success in group1 (vector)}
+\item{p1}{probability in one group (vector)}
 
-\item{p2}{probability of success in group1 (vector)}
+\item{p2}{probability in other group (vector)}
 
 \item{n}{per-group sample size}
 
@@ -17,6 +17,15 @@ average.power.fisher(p1, p2, n, alpha, alternative)
 
 \item{alternative}{one- or two-sided test}
 }
+\value{
+average power estimate for multiple testing procedure
+}
 \description{
 Compute average power of many Fisher's exact tests
+}
+\examples{
+set.seed(1234);
+p1 = sample(seq(0,0.5,0.1),40,replace = TRUE);
+p2 = sample(seq(0.5,1,0.1),40,replace = TRUE);
+average.power.fisher(p1 = p1,p2 = p2,n = 30,alpha = 0.05,alternative = "two.sided")
 }

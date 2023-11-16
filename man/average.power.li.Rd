@@ -11,22 +11,28 @@ average.power.li(n, alpha, rho, mu0, w = 1, type = "w")
 
 \item{alpha}{p-value threshold (scalar)}
 
-\item{rho}{Fold-change, usual null hypothesis is that rho=1 (vector)}
+\item{rho}{fold-change, usual null hypothesis is that rho=1 (vector)}
 
-\item{mu0}{Average count in control group}
+\item{mu0}{average count in control group (vector)}
 
-\item{w}{Ratio of total number of}
+\item{w}{ratio of the total number of reads mapped between the two groups (scalar or vector)}
 
-\item{type}{Type of test: "w" for Wald, "s" for score, "lw" for log-transformed Wald, "ls" for log-transformed score}
+\item{type}{type of test: "w" for Wald, "s" for score, "lw" for log-transformed Wald, "ls" for log-transformed score}
 }
 \value{
-Average power estimates for a series of two-sided tests
+average power estimate for multiple testing procedure
 }
 \description{
 Use the formula of Li et al (2013) to compute power for comparing RNA-seq expression across two groups assuming the Poisson distribution.
 }
 \details{
-This function computes the average power for a series of two-sided tests defined by the input parameters. The power is based on the sample size formulas in equations 10-13 of Li et al (2013). Also, note that the null.effect is set to 1 in the examples because the usual null hypothesis is that the fold-change = 1.
+This function computes the average power for a series of two-sided tests defined by the input parameters. The power is based on the sample size formulas in equations (10-13) of Li et al (2013). Also, note that the null.effect is set to 1 in the examples because the usual null hypothesis is that the fold-change = 1.
+}
+\examples{
+rho = rep(c(1,1.25),c(900,100));
+mu0 = rep(5,1000);
+w = rep(0.5,1000);
+average.power.li(n = 50, alpha = 0.05, rho = rho, mu0 = mu0, w = w, type = "w")
 }
 \references{
 C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4). doi:10.1504/IJCBDD.2013.056830
