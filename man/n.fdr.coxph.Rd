@@ -7,19 +7,37 @@
 n.fdr.coxph(fdr, pwr, logHR, v, pi0.hat = "BH")
 }
 \arguments{
-\item{fdr}{Desired FDR (scalar numeric)}
+\item{fdr}{desired FDR (scalar numeric)}
 
-\item{pwr}{Power of single α-level test (scalar numeric)}
+\item{pwr}{desired average power (scalar numeric)}
 
 \item{logHR}{log hazard ratio (vector)}
 
 \item{v}{variance of predictor variable (vector)}
 
-\item{pi0.hat}{Approximation method for null proportion}
+\item{pi0.hat}{approximation method for null proportion}
+}
+\value{
+a list with the following components:
+\item{n}{a sample size estimate}
+\item{computed.avepow}{average power}
+\item{desired.avepow}{desired average power}
+\item{desired.fdr}{desired FDR}
+\item{input.pi0}{proportion of tests with a true null hypothesis}
+\item{alpha}{fixed p-value threshold for multiple testing procedure}
+\item{n.its}{numver of iteration}
+\item{max.its}{maximum number of iteration, default is 50}
+\item{n0}{lower limit for initial sample size range}
+\item{n1}{upper limit for initial sample size range}
 }
 \description{
-Find number of events needed to have a desired false discovery rate and power for a large number of Cox regression models with nonbinary covariates
+Find number of events needed to have a desired false discovery rate and average power for a large number of Cox regression models with non-binary covariates.
+}
+\examples{
+log.HR=log(rep(c(1,2),c(900,100)))
+v=rep(1,1000)
+n.fdr.coxph(fdr=0.1, pwr=0.8,logHR=log.HR, v=v, pi0.hat="BH")
 }
 \references{
-Hsieh, FY and Lavori, Philip W (2000) Sample-size calculations for the Cox proportional hazards regression model with nonbinary covariates. Controlled Clinical Trials 21(6):552-560.
+Hsieh, FY and Lavori, Philip W (2000) Sample-size calculations for the Cox proportional hazards regression model with non-binary covariates. Controlled Clinical Trials 21(6):552-560.
 }

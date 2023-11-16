@@ -2,25 +2,42 @@
 % Please edit documentation in R/samplesize.R
 \name{find.sample.size}
 \alias{find.sample.size}
-\title{Determines the sample size needed to achieve a desired power while controlling the FDR at a specified level.}
+\title{Determines the sample size needed to achieve a desired average power while controlling the FDR at a specified level}
 \usage{
 find.sample.size(alpha, pwr, avepow.func, n0 = 3, n1 = 6, max.its = 50, ...)
 }
 \arguments{
-\item{alpha}{Fixed p-value threshold  (scalar numeric)}
+\item{alpha}{the fixed p-value threshold  (scalar numeric)}
 
-\item{pwr}{Power of single α-level test (scalar numeric)}
+\item{pwr}{desired average power (scalar numeric)}
 
 \item{avepow.func}{an R function to compute average power}
 
-\item{n0}{Lower limit for initial sample size range}
+\item{n0}{lower limit for initial sample size range}
 
-\item{n1}{Upper limit for initial sample size range}
+\item{n1}{upper limit for initial sample size range}
 
-\item{max.its}{Number of iterations}
+\item{max.its}{maximum number of iterations}
 
-\item{...}{Additional arguments to average power function}
+\item{...}{additional arguments to average power function}
+}
+\value{
+a list with the following components:
+\item{n}{a sample size estimate}
+\item{computed.avepow}{average power}
+\item{desired.avepow}{desired average power}
+\item{alpha}{fixed p-value threshold for multiple testing procedure}
+\item{n.its}{numver of iteration}
+\item{max.its}{maximum number of iteration, default is 50}
+\item{n0}{lower limit for initial sample size range}
+\item{n1}{upper limit for initial sample size range}
 }
 \description{
-Determines the sample size needed to achieve a desired power while controlling the FDR at a specified level.
+Determines the sample size needed to achieve a desired average power while controlling the FDR at a specified level.
+}
+\examples{
+average.power.signtest;
+p.adj = 0.001;
+p = rep(c(0.8,0.5), c(100,9900));
+find.sample.size(alpha = p.adj, pwr = 0.8, avepow.func = average.power.signtest, p = p)
 }

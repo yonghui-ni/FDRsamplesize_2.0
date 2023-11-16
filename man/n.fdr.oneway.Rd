@@ -7,16 +7,33 @@
 n.fdr.oneway(fdr, pwr, theta, k, pi0.hat = "BH")
 }
 \arguments{
-\item{fdr}{Desired FDR (scalar numeric)}
+\item{fdr}{desired FDR (scalar numeric)}
 
-\item{pwr}{Power of single α-level test (scalar numeric)}
+\item{pwr}{desired average power (scalar numeric)}
 
 \item{theta}{sum of ((group mean - overall mean)/stdev)^2 across all groups for each hypothesis test (vector)}
 
 \item{k}{the number of groups to be compared}
 
-\item{pi0.hat}{Approximation method for null proportion}
+\item{pi0.hat}{approximation method for null proportion}
+}
+\value{
+a list with the following components:
+\item{n}{a sample size estimate}
+\item{computed.avepow}{average power}
+\item{desired.avepow}{desired average power}
+\item{desired.fdr}{desired FDR}
+\item{input.pi0}{proportion of tests with a true null hypothesis}
+\item{alpha}{fixed p-value threshold for multiple testing procedure}
+\item{n.its}{numver of iteration}
+\item{max.its}{maximum number of iteration, default is 50}
+\item{n0}{lower limit for initial sample size range}
+\item{n1}{upper limit for initial sample size range}
 }
 \description{
-Find the sample size needed to have a desired false discovery rate and power for a large number of one-way ANOVA tests
+Find the sample size needed to have a desired false discovery rate and average power for a large number of one-way ANOVA tests.
+}
+\examples{
+theta=rep(c(2,0),c(100,900));
+n.fdr.oneway(fdr = 0.1, pwr = 0.8, theta = theta, k = 2, pi0.hat = "BH")
 }

@@ -2,23 +2,36 @@
 % Please edit documentation in R/samplesize.R
 \name{alpha.power.fdr}
 \alias{alpha.power.fdr}
-\title{Compute p-value threshold for  given the proportion pi0 of tests with a true null}
+\title{Compute p-value threshold for given the proportion pi0 of tests with a true null}
 \usage{
 alpha.power.fdr(fdr, pwr, pi0, method = "HH")
 }
 \arguments{
-\item{fdr}{Desired FDR (scalar numeric)}
+\item{fdr}{desired FDR (scalar numeric)}
 
-\item{pwr}{Power of single α-level test (scalar numeric)}
+\item{pwr}{pwer of single α-level test (scalar numeric)}
 
-\item{pi0}{The proportion of tests with a true null hypothesis.}
+\item{pi0}{the proportion of tests with a true null hypothesis}
 
-\item{method}{Approximation method includes "HH" (3-part histogram height) , "PC" (3-part histogram expected value),"BH"(Benjamini & Hochberg 1995),"Jung"(Jung 2005)}
+\item{method}{approximation method includes: "HH" (p-value histogram height) , "HM" (p-value histogram mean),"BH" (Benjamini & Hochberg 1995),"Jung" (Jung 2005)}
+}
+\value{
+the fixed p-value threshold for multiple testing procedure
 }
 \description{
-Given the proportion pi0 of tests with a true null, find the p-value threshold that results in a desired FDR control and a desired power
+Given the proportion pi0 of tests with a true null, find the p-value threshold that results in a desired FDR and average power.
+}
+\details{
+To get the fixed p-value threshold for multiple testing procedure, 4 approximation methods are provided, they are Benjamini & Hochberg procedure (1995), Jung's formula (2005),
+method of using p-value histogram height (HH) and method using p-value histogram mean (HM).
+}
+\examples{
+alpha.power.fdr(fdr = 0.1, pwr = 0.9, pi0=0.9, method = "HH")
 }
 \references{
-Pounds, Stan, and Cheng Cheng. "Sample size determination for the false discovery rate." Bioinformatics 21.23 (2005): 4263-4271. Gadbury GL, et al. (2004) Power and sample size estimation in high dimensional biology. Statistical Methods in Medical Research 13(4):325-38.
+Pounds, Stan, and Cheng Cheng. "Sample size determination for the false discovery rate." Bioinformatics 21.23 (2005): 4263-4271.
+
+Gadbury GL, et al. (2004) Power and sample size estimation in high dimensional biology. Statistical Methods in Medical Research 13(4):325-38.
+
 Jung, Sin-Ho."Sample size for FDR-control in microarray data analysis." Bioinformatics 21.14 (2005): 3097-3104.
 }

@@ -13,6 +13,13 @@ average.power.signtest(n, alpha, p)
 
 \item{p}{Pr(Y>X), as in Noether (JASA 1987)}
 }
+\value{
+average power estimate for multiple testing procedure
+}
 \description{
 Compute average power of many sign tests
+}
+\examples{
+p = rep(c(0.8,0.5),c(100,900));
+average.power.signtest(n = 50, alpha = 0.05, p=p)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/average_power.R
 \name{average.power.signrank}
 \alias{average.power.signrank}
-\title{Compute average power of many signrank tests}
+\title{Compute average power of many signed-rank tests}
 \usage{
 average.power.signrank(n, alpha, p)
 }
@@ -13,6 +13,13 @@ average.power.signrank(n, alpha, p)
 
 \item{p}{Pr(Y>X), as in Noether (JASA 1987)}
 }
+\value{
+average power estimate for multiple testing procedure
+}
 \description{
-Compute average power of many signrank tests
+Compute average power of many signed-rank tests
+}
+\examples{
+p = rep(c(0.8,0.5),c(100,900));
+average.power.signrank(n = 50, alpha = 0.05, p = p)
 }

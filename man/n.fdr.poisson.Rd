@@ -7,22 +7,41 @@
 n.fdr.poisson(fdr, pwr, rho, mu0, w = 1, type = "w", pi0.hat = "BH")
 }
 \arguments{
-\item{fdr}{Desired FDR (scalar numeric)}
+\item{fdr}{desired FDR (scalar numeric)}
 
-\item{pwr}{Power of single α-level test (scalar numeric)}
+\item{pwr}{desired average power (scalar numeric)}
 
-\item{rho}{Fold-change, usual null hypothesis is that rho=1 (vector)}
+\item{rho}{fold-change, usual null hypothesis is that rho=1 (vector)}
 
-\item{mu0}{Average count in control group}
+\item{mu0}{average count in control group (vector)}
 
-\item{w}{Ratio of total number of}
+\item{w}{ratio of the total number of reads mapped between the two groups}
 
 \item{type}{Type of test: "w" for Wald, "s" for score, "lw" for log-transformed Wald, "ls" for log-transformed score.}
 
 \item{pi0.hat}{Approximation method for null proportion}
 }
+\value{
+a list with the following components:
+\item{n}{a sample size estimate}
+\item{computed.avepow}{average power}
+\item{desired.avepow}{desired average power}
+\item{desired.fdr}{desired FDR}
+\item{input.pi0}{proportion of tests with a true null hypothesis}
+\item{alpha}{fixed p-value threshold for multiple testing procedure}
+\item{n.its}{numver of iteration}
+\item{max.its}{maximum number of iteration, default is 50}
+\item{n0}{lower limit for initial sample size range}
+\item{n1}{upper limit for initial sample size range}
+}
 \description{
-Find the sample size needed to have a desired false discovery rate and power for a large number of two-group comparisons under Poisson distribution
+Find the sample size needed to have a desired false discovery rate and average power for a large number of two-group comparisons under Poisson distribution.
+}
+\examples{
+rho = rep(c(1,1.25),c(900,100));
+mu0 = rep(5,1000);
+w = rep(0.5,1000);
+n.fdr.poisson(fdr = 0.1, pwr = 0.8, rho = rho, mu0 = mu0, w = w, type = "w", pi0.hat = "BH")
 }
 \references{
 C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4). doi:10.1504/IJCBDD.2013.056830

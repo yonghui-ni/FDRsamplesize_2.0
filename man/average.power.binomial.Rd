@@ -7,16 +7,25 @@
 average.power.binomial(n, alpha, p1, p2, alternative)
 }
 \arguments{
-\item{n}{per-group sample size}
+\item{n}{per-group sample size (scalar)}
 
-\item{alpha}{p-value threshold}
+\item{alpha}{p-value threshold (scalar)}
 
-\item{p1}{probability in one group}
+\item{p1}{probability in one group (vector)}
 
-\item{p2}{probability in other group}
+\item{p2}{probability in other group (vector)}
 
 \item{alternative}{one- or two-sided test}
 }
+\value{
+average power estimate for multiple testing procedure
+}
 \description{
 Computer average power of many binomial comparisons
+}
+\examples{
+set.seed(1234);
+p1 = sample(seq(0,0.5,0.1),40,replace = TRUE);
+p2 = sample(seq(0.5,1,0.1),40,replace = TRUE);
+average.power.binomial(n = 30, alpha = 0.05, p1 = p1,p2 = p2,alternative="two.sided")
 }

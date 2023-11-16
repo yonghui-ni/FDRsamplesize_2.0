@@ -4,7 +4,14 @@
 \alias{average.power.t.test}
 \title{Compute average power of many t-tests}
 \usage{
-average.power.t.test(n, alpha, delta, sigma, type = "two.sample")
+average.power.t.test(
+  n,
+  alpha,
+  delta,
+  sigma = 1,
+  type = "two.sample",
+  alternative = "two.sided"
+)
 }
 \arguments{
 \item{n}{per-group sample size (scalar)}
@@ -13,10 +20,19 @@ average.power.t.test(n, alpha, delta, sigma, type = "two.sample")
 
 \item{delta}{difference of population means (vector)}
 
-\item{sigma}{standard deviation (vector or scalar)}
+\item{sigma}{standard deviation (vector or scalar, default=1)}
 
-\item{type}{type of t-test: two.sample, one.sample}
+\item{type}{type of t-test: "two.sample", "one.sample"}
+
+\item{alternative}{one- or two-sided test}
+}
+\value{
+average power estimate for multiple testing procedure
 }
 \description{
-Compute average power of many t-tests;Uses classical power formula for t-test;Assumes equal variance and sample size
+Compute average power of many t-tests; Uses classical power formula for t-test; Assumes equal variance and sample size
+}
+\examples{
+d = rep(c(2,0),c(100,900));
+average.power.t.test(n = 20, alpha = 0.05,delta = d)
 }
