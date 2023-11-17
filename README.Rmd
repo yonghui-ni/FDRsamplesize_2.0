@@ -39,7 +39,7 @@ You can install *FDRsamplesize2* from github:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("yonghui-ni/FDRsamplesize2")
+devtools::install_github("yonghui-ni/FDRsamplesize_2.0")
 ```
 Or from CRAN:
 
