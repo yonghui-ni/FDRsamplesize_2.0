@@ -1,7 +1,7 @@
 Package: FDRsamplesize2
 Type: Package
 Title: Computing Power and Sample Size for the False Discovery Rate in Multiple Applications
-Version: 0.1.0
+Version: 0.1.0.9000
 Author: Yonghui Ni, Stan Pounds
 Maintainer: Stan Pounds <stanley.pounds@stjude.org>
 Description: Defines a collection of functions to compute average power and sample size for studies that use the false discovery rate as the final measure of statistical significance.
