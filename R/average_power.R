@@ -5,7 +5,7 @@
 #' @param alpha p-value threshold (scalar)
 #' @param logHR log hazard ratio (vector)
 #' @param v variance of predictor variable (vector)
-#' @return average power estimate for multiple testing procedure
+#' @return Average power estimate for multiple testing procedure
 #' @examples
 #' logHR = log(rep(c(1, 2),c(900, 100)));
 #' v = rep(1, 1000);
@@ -22,15 +22,15 @@ average.power.coxph <- function(n, alpha, logHR, v) {
 }
 
 
-#' @title Compute average power for RNA-seq experiments assuming negative binomial distribution
+#' @title Compute average power for RNA-seq experiments assuming Negative Binomial distribution
 #' @param n per-group sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param log.fc log fold-change (vector), usual null hypothesis is log.fc=0
 #' @param mu read depth per gene (vector, same length as log.fc)
 #' @param sig coefficient of variation (CV) per gene (vector, same length as log.fc)
-#' @return average power estimate for multiple testing procedure
+#' @return Average power estimate for multiple testing procedure
 #' @details
-#' The power function is based on equation (1) of Hart et al (2013). It assumes a negative binomial model for RNA-seq read counts and equal sample size per group.
+#' The power function is based on equation (1) of Hart et al (2013). It assumes a Negative Binomial model for RNA-seq read counts and equal sample size per group.
 #' @examples
 #' logFC = log(rep(c(1,2),c(900,100)));
 #' mu = rep(5,1000);
@@ -50,7 +50,7 @@ average.power.hart <- function(n, alpha, log.fc, mu, sig) {
 #' @param n sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
-#' @return average power estimate for multiple testing procedure
+#' @return Average power estimate for multiple testing procedure
 #' @examples
 #' p = rep(c(0.8,0.5),c(100,900));
 #' average.power.ranksum(n = 50, alpha = 0.05, p=p)
@@ -69,7 +69,7 @@ average.power.ranksum <- function(n, alpha, p) {
 #' @param alpha p-value threshold (scalar)
 #' @param theta sum of ((group mean - overall mean)/stdev)^2 across all groups for each hypothesis test(vector)
 #' @param k the number of groups to be compared
-#' @return average power estimate for multiple testing procedure
+#' @return Average power estimate for multiple testing procedure
 #' @examples
 #' theta=rep(c(2,0),c(100,900));
 #' average.power.oneway(n = 50, alpha = 0.05, theta = theta, k = 2)
@@ -87,7 +87,7 @@ average.power.oneway <- function(n, alpha, theta, k) {
 #' @param n sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
-#' @return average power estimate for multiple testing procedure
+#' @return Average power estimate for multiple testing procedure
 #' @examples
 #' p = rep(c(0.8,0.5),c(100,900));
 #' average.power.signtest(n = 50, alpha = 0.05, p=p)
@@ -106,7 +106,7 @@ average.power.signtest <- function(n, alpha, p) {
 #' @param n sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
-#' @return average power estimate for multiple testing procedure
+#' @return Average power estimate for multiple testing procedure
 #' @examples
 #' p = rep(c(0.8,0.5),c(100,900));
 #' average.power.signrank(n = 50, alpha = 0.05, p = p)
@@ -132,8 +132,8 @@ average.power.signrank <- function(n, alpha, p) {
 #' @param type type of test: "w" for Wald, "s" for score, "lw" for log-transformed Wald, "ls" for log-transformed score
 #' @details
 #' This function computes the average power for a series of two-sided tests defined by the input parameters. The power is based on the sample size formulas in equations (10-13) of Li et al (2013). Also, note that the null.effect is set to 1 in the examples because the usual null hypothesis is that the fold-change = 1.
-#' @return average power estimate for multiple testing procedure
-#' @references C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4). doi:10.1504/IJCBDD.2013.056830
+#' @return Average power estimate for multiple testing procedure
+#' @references C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4).<doi:10.1504/IJCBDD.2013.056830>
 #' @examples
 #' rho = rep(c(1,1.25),c(900,100));
 #' mu0 = rep(5,1000);
@@ -155,7 +155,7 @@ average.power.li <- function(n, alpha, rho, mu0, w = 1, type = "w") {
 #' @param n per-group sample size
 #' @param alpha p-value threshold
 #' @param alternative one- or two-sided test
-#' @return average power estimate for multiple testing procedure
+#' @return Average power estimate for multiple testing procedure
 #' @examples
 #' set.seed(1234);
 #' p1 = sample(seq(0,0.5,0.1),40,replace = TRUE);
@@ -186,7 +186,7 @@ average.power.fisher <- function(p1, p2, n, alpha, alternative)
 #' @param n sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param rho population correlation coefficient (vector)
-#' @return average power estimate for multiple testing procedure
+#' @return Average power estimate for multiple testing procedure
 #' @details
 #' For many applications, the null.effect is rho = 0
 #' @examples
@@ -204,13 +204,13 @@ average.power.tcorr=function(n,alpha,rho)
 }
 
 
-#' @title Computer average power of many binomial comparisons
+#' @title Computer average power of many Binomial comparisons
 #' @param n  per-group sample size (scalar)
 #' @param p1  probability in one group (vector)
 #' @param p2  probability in other group (vector)
 #' @param alpha p-value threshold (scalar)
 #' @param alternative one- or two-sided test
-#' @return average power estimate for multiple testing procedure
+#' @return Average power estimate for multiple testing procedure
 #' @examples
 #' set.seed(1234);
 #' p1 = sample(seq(0,0.5,0.1),40,replace = TRUE);
@@ -236,7 +236,7 @@ average.power.binomial <- function(n, alpha, p1, p2, alternative) {
 #' @param sigma standard deviation (vector or scalar, default=1)
 #' @param type type of t-test: "two.sample", "one.sample"
 #' @param alternative one- or two-sided test
-#' @return average power estimate for multiple testing procedure
+#' @return Average power estimate for multiple testing procedure
 #' @examples
 #' d = rep(c(2,0),c(100,900));
 #' average.power.t.test(n = 20, alpha = 0.05,delta = d)

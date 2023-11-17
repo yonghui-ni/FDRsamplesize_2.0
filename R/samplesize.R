@@ -5,14 +5,14 @@
 #' @param pwr desired average power (scalar numeric)
 #' @param rho  population correlation coefficient (vector)
 #' @param pi0.hat approximation method for null proportion
-#' @return  a list with the following components:
+#' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
 #' \item{input.pi0}{proportion of tests with a true null hypothesis}
 #' \item{alpha}{fixed p-value threshold for multiple testing procedure}
-#' \item{n.its}{numver of iteration}
+#' \item{n.its}{number of iteration}
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
@@ -52,14 +52,14 @@ n.fdr.tcorr=function(fdr,pwr,rho,pi0.hat="BH")
 #' @param p2  probability in other group (vector)
 #' @param alternative one- or two-sided test
 #' @param pi0.hat approximation method for null proportion
-#' @return  a list with the following components:
+#' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
 #' \item{input.pi0}{proportion of tests with a true null hypothesis}
 #' \item{alpha}{fixed p-value threshold for multiple testing procedure}
-#' \item{n.its}{numver of iteration}
+#' \item{n.its}{number of iteration}
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
@@ -86,14 +86,14 @@ n.fdr.binomial <- function(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat 
 #' @param p2  probability in other group (vector)
 #' @param alternative one- or two-sided test
 #' @param pi0.hat approximation method for null proportion
-#' @return  a list with the following components:
+#' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
 #' \item{input.pi0}{proportion of tests with a true null hypothesis}
 #' \item{alpha}{fixed p-value threshold for multiple testing procedure}
-#' \item{n.its}{numver of iteration}
+#' \item{n.its}{number of iteration}
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
@@ -133,18 +133,18 @@ n.fdr.fisher <- function(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat = 
 #' @param w ratio of the total number of reads mapped between the two groups
 #' @param type Type of test: "w" for Wald, "s" for score, "lw" for log-transformed Wald, "ls" for log-transformed score.
 #' @param pi0.hat Approximation method for null proportion
-#' @return  a list with the following components:
+#' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
 #' \item{input.pi0}{proportion of tests with a true null hypothesis}
 #' \item{alpha}{fixed p-value threshold for multiple testing procedure}
-#' \item{n.its}{numver of iteration}
+#' \item{n.its}{number of iteration}
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
-#' @references C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4). doi:10.1504/IJCBDD.2013.056830
+#' @references C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4).<doi:10.1504/IJCBDD.2013.056830>
 #' @examples
 #' rho = rep(c(1,1.25),c(900,100));
 #' mu0 = rep(5,1000);
@@ -178,14 +178,14 @@ n.fdr.poisson <- function(fdr, pwr, rho, mu0, w = 1, type = "w", pi0.hat = "BH")
 #' @param pwr desired average power (scalar numeric)
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
 #' @param pi0.hat approximation method for null proportion
-#' @return  a list with the following components:
+#' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
 #' \item{input.pi0}{proportion of tests with a true null hypothesis}
 #' \item{alpha}{fixed p-value threshold for multiple testing procedure}
-#' \item{n.its}{numver of iteration}
+#' \item{n.its}{number of iteration}
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
@@ -221,14 +221,14 @@ n.fdr.signrank <- function(fdr, pwr, p, pi0.hat = "BH") {
 #' @param pwr desired average power (scalar numeric)
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
 #' @param pi0.hat approximation method for null proportion
-#' @return  a list with the following components:
+#' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
 #' \item{input.pi0}{proportion of tests with a true null hypothesis}
 #' \item{alpha}{fixed p-value threshold for multiple testing procedure}
-#' \item{n.its}{numver of iteration}
+#' \item{n.its}{number of iteration}
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
@@ -264,14 +264,14 @@ n.fdr.signtest <- function(fdr, pwr, p, pi0.hat = "BH") {
 #' @param pwr desired average power (scalar numeric)
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
 #' @param pi0.hat Approximation method for null proportion
-#' @return  a list with the following components:
+#' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
 #' \item{input.pi0}{proportion of tests with a true null hypothesis}
 #' \item{alpha}{fixed p-value threshold for multiple testing procedure}
-#' \item{n.its}{numver of iteration}
+#' \item{n.its}{number of iteration}
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
@@ -305,17 +305,17 @@ n.fdr.ranksum <- function(fdr, pwr, p, pi0.hat = "BH") {
 #' Find the sample size needed to have a desired false discovery rate and average power for a large number of one-way ANOVA tests.
 #' @param fdr desired FDR (scalar numeric)
 #' @param pwr desired average power (scalar numeric)
-#' @param theta sum of ((group mean - overall mean)/stdev)^2 across all groups for each hypothesis test (vector)
+#' @param theta sum of ((group mean - overall mean)/stdev)^2 across all groups for each hypothesis test (vector)
 #' @param pi0.hat approximation method for null proportion
 #' @param k the number of groups to be compared
-#' @return  a list with the following components:
+#' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
 #' \item{input.pi0}{proportion of tests with a true null hypothesis}
 #' \item{alpha}{fixed p-value threshold for multiple testing procedure}
-#' \item{n.its}{numver of iteration}
+#' \item{n.its}{number of iteration}
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
@@ -351,14 +351,14 @@ n.fdr.oneway <- function(fdr, pwr, theta, k, pi0.hat = "BH") {
 #' @param logHR log hazard ratio (vector)
 #' @param v variance of predictor variable (vector)
 #' @param pi0.hat approximation method for null proportion
-#' @return  a list with the following components:
+#' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
 #' \item{input.pi0}{proportion of tests with a true null hypothesis}
 #' \item{alpha}{fixed p-value threshold for multiple testing procedure}
-#' \item{n.its}{numver of iteration}
+#' \item{n.its}{number of iteration}
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
@@ -388,7 +388,7 @@ n.fdr.coxph <- function(fdr, pwr, logHR, v, pi0.hat = "BH") {
 }
 
 
-#' @title Sample size calculation for negative binomial data
+#' @title Sample size calculation for Negative Binomial data
 #' @description
 #' Find the sample size needed to have a desired false discovery rate and average power for a large number of Negative Binomial comparisons.
 #' @param fdr desired FDR (scalar numeric)
@@ -398,14 +398,14 @@ n.fdr.coxph <- function(fdr, pwr, logHR, v, pi0.hat = "BH") {
 #' @param sig coefficient of variation (CV) per gene (vector, same length as log.fc)
 #' @param pi0.hat approximation method for null proportion
 #' @references SN Hart, TM Therneau, Y Zhang, GA Poland, and J-P Kocher (2013). Calculating Sample Size Estimates for RNA Sequencing Data. Journal of Computational Biology 20: 970-978.
-#' @return  a list with the following components:
+#' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
 #' \item{input.pi0}{proportion of tests with a true null hypothesis}
 #' \item{alpha}{fixed p-value threshold for multiple testing procedure}
-#' \item{n.its}{numver of iteration}
+#' \item{n.its}{number of iteration}
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
@@ -447,14 +447,14 @@ n.fdr.negbin <- function(fdr, pwr, log.fc, mu, sig, pi0.hat = "BH") {
 #' @param type type of t-test
 #' @param alternative one- or two-sided test
 #' @param pi0.hat approximation method for null proportion
-#' @return  a list with the following components:
+#' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{desired.fdr}{desired FDR}
 #' \item{input.pi0}{proportion of tests with a true null hypothesis}
 #' \item{alpha}{fixed p-value threshold for multiple testing procedure}
-#' \item{n.its}{numver of iteration}
+#' \item{n.its}{number of iteration}
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
@@ -482,12 +482,12 @@ n.fdr.ttest <- function(fdr, pwr, delta, sigma = 1, type = "two.sample", pi0.hat
 #' @param n1 upper limit for initial sample size range
 #' @param max.its maximum number of iterations
 #' @param ... additional arguments to average power function
-#' @return  a list with the following components:
+#' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
 #' \item{computed.avepow}{average power}
 #' \item{desired.avepow}{desired average power}
 #' \item{alpha}{fixed p-value threshold for multiple testing procedure}
-#' \item{n.its}{numver of iteration}
+#' \item{n.its}{number of iteration}
 #' \item{max.its}{maximum number of iteration, default is 50}
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
@@ -545,13 +545,13 @@ find.sample.size <- function(alpha, pwr, avepow.func, n0 = 3, n1 = 6, max.its = 
 #' @description
 #' Given the proportion pi0 of tests with a true null, find the p-value threshold that results in a desired FDR and average power.
 #' @param fdr desired FDR (scalar numeric)
-#' @param pwr pwer of single α-level test (scalar numeric)
+#' @param pwr desired average power (scalar numeric)
 #' @param pi0 the proportion of tests with a true null hypothesis
 #' @param method approximation method includes: "HH" (p-value histogram height) , "HM" (p-value histogram mean),"BH" (Benjamini & Hochberg 1995),"Jung" (Jung 2005)
-#' @return the fixed p-value threshold for multiple testing procedure
+#' @return The fixed p-value threshold for multiple testing procedure
 #' @details
 #' To get the fixed p-value threshold for multiple testing procedure, 4 approximation methods are provided, they are Benjamini & Hochberg procedure (1995), Jung's formula (2005),
-#' method of using p-value histogram height (HH) and method using p-value histogram mean (HM).
+#' method of using p-value histogram height (HH) and method of using p-value histogram mean (HM).
 #' @references
 #' Pounds, Stan, and Cheng Cheng. "Sample size determination for the false discovery rate." Bioinformatics 21.23 (2005): 4263-4271.
 #'

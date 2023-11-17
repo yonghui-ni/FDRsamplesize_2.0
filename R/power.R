@@ -1,10 +1,10 @@
 #' @title Compute the power of a single-predictor Cox regression model
-#' @description Use the formula of Hseih and Lavori (2000) to compute the power of a single-predictor Cox model
+#' @description Use the formula of Hsieh and Lavori (2000) to compute the power of a single-predictor Cox model
 #' @param n number of events (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param logHR log hazard ratio (vector)
 #' @param v variance of predictor variable (vector)
-#' @return vector of power estimates for two-sided test
+#' @return Vector of power estimates for two-sided test
 #' @references Hsieh, FY and Lavori, Philip W (2000) Sample-size calculations for the Cox proportional hazards regression model with non-binary covariates. Controlled Clinical Trials 21(6):552-560.
 #' @examples
 #' logHR = log(rep(c(1, 2),c(900, 100)));
@@ -21,17 +21,17 @@ power.cox <- function(n,
 }
 
 
-#' @title Compute power for RNA-seq experiments assuming negative binomial distribution
+#' @title Compute power for RNA-seq experiments assuming Negative Binomial distribution
 #' @description
-#' Use the formula of Hart et al (2013) to compute power for comparing RNA-seq expression across two groups assuming a negative binomial distribution
+#' Use the formula of Hart et al (2013) to compute power for comparing RNA-seq expression across two groups assuming a Negative Binomial distribution
 #' @param n per-group sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param log.fc log fold-change (vector), usual null hypothesis is log.fc=0
 #' @param mu read depth per gene (vector, same length as log.fc)
 #' @param sig coefficient of variation (CV) per gene (vector, same length as log.fc)
 #' @details
-#' This function is based on equation (1) of Hart et al (2013). It assumes a negative binomial model for RNA-seq read counts and equal sample size per group.
-#' @return vector of power estimates for the set of two-sided tests
+#' This function is based on equation (1) of Hart et al (2013). It assumes a Negative Binomial model for RNA-seq read counts and equal sample size per group.
+#' @return Vector of power estimates for the set of two-sided tests
 #' @references SN Hart, TM Therneau, Y Zhang, GA Poland, and J-P Kocher (2013). Calculating Sample Size Estimates for RNA Sequencing Data. Journal of Computational Biology 20: 970-978.
 #' @examples
 #' n.hart = 2*(qnorm(0.975)+qnorm(0.9))^2*(1/20+0.6^2)/(log(2)^2)   # Equation (6) of Hart et al
@@ -58,7 +58,7 @@ power.hart <- function(n,
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
 #' @details
 #' In most applications, the null effect size will be designated by p = 0.5
-#' @return vector of power estimates for two-sided tests
+#' @return Vector of power estimates for two-sided tests
 #' @references Noether, Gottfried E (1987) Sample size determination for some common nonparametric tests. Journal of the American Statistical Association, 82:645-647.
 #' @examples
 #' p = rep(c(0.8,0.5),c(100,900))
@@ -86,7 +86,7 @@ power.ranksum <- function(n, alpha, p) {
 #' @param k the number of groups to be compared, default k=2
 #' @details
 #' For many applications, the null effect is zero for the parameter theta described above
-#' @returns vector of power estimates for test of equal means
+#' @returns Vector of power estimates for test of equal means
 #' @examples
 #' theta=rep(c(2,0),c(100,900));
 #' res = power.oneway(n = 50, alpha = 0.05, theta = theta, k = 2)
@@ -105,7 +105,7 @@ power.oneway <- function(n, alpha, theta, k = 2) {
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
 #' @details
 #' In most applications, the null effect size will be designated by p = 0.5
-#' @return vector of power estimates for two-sided tests
+#' @return Vector of power estimates for two-sided tests
 #' @references Noether, Gottfried E (1987) Sample size determination for some common nonparametric tests. Journal of the American Statistical Association, 82:645-647.
 #' @examples
 #' p = rep(c(0.8,0.5),c(100,900));
@@ -130,7 +130,7 @@ power.signtest <- function(n, alpha, p) {
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
 #' @details
 #' In most applications, the null effect size will be designated by p = 0.5
-#' @return vector of power estimates for two-sided tests
+#' @return Vector of power estimates for two-sided tests
 #' @references Noether, Gottfried E (1987) Sample size determination for some common nonparametric tests. Journal of the American Statistical Association, 82:645-647.
 #' @examples
 #' p = rep(c(0.8,0.5),c(100,900));
@@ -151,7 +151,7 @@ power.signrank <- function(n,
 }
 
 
-#' @title Compute power for RNA-Seq experiments assuming poisson distribution
+#' @title Compute power for RNA-Seq experiments assuming Poisson distribution
 #' @description
 #' Use the formula of Li et al (2013) to compute power for comparing RNA-seq expression across two groups assuming the Poisson distribution
 #' @param n per-group sample size
@@ -162,8 +162,8 @@ power.signrank <- function(n,
 #' @param type type of test: "w" for Wald, "s" for score, "lw" for log-transformed Wald, "ls" for log-transformed score
 #' @details
 #' This function computes the power for each of a series of two-sided tests defined by the input parameters. The power is based on the sample size formulas in equations (10-13) of Li et al (2013). Also, note that the null.effect is set to 1 in the examples because the usual null hypothesis is that the fold-change = 1.
-#' @return vector of power estimates for two-sided tests
-#' @references C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4). doi:10.1504/IJCBDD.2013.056830
+#' @return Vector of power estimates for two-sided tests
+#' @references C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4). <doi:10.1504/IJCBDD.2013.056830>
 #' @examples
 #' power.li(88, 0.05, 1.25, 5, 0.5,"w") # recapitulate 80% power in Table 1 of Li et al (2013)'
 #' @importFrom stats pnorm qnorm
@@ -212,7 +212,7 @@ power.li <- function(n,
 #' @param n per-group sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param alternative one- or two-sided test, must be one of "greater", "less", or "two.sided"
-#' @return power estimate for one- or two-sided tests
+#' @return Power estimate for one- or two-sided tests
 #' @examples
 #' power.fisher(p1 = 0.5, p2 = 0.9, n=30, alpha = 0.05, alternative = 'two.sided')
 #' @export
@@ -240,7 +240,7 @@ power.fisher <- function(p1, p2, n, alpha, alternative)
 #' @param n sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param rho population correlation coefficient (vector)
-#' @return vector of power estimates for two-sided tests
+#' @return Vector of power estimates for two-sided tests
 #' @details
 #' For many applications, the null.effect is rho = 0
 #' @examples
