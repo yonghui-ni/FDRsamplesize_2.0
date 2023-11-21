@@ -110,10 +110,12 @@ n.fdr.twoprop <- function(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat =
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
 #' @examples
+#' \dontrun{
 #' set.seed(1234);
 #' p1 = sample(seq(0,0.5,0.1),10,replace = TRUE);
 #' p2 = sample(seq(0.5,1,0.1),10,replace = TRUE);
 #' n.fdr.fisher(fdr = 0.1, pwr = 0.8, p1 = p1, p2 = p2, alternative = "two.sided", pi0.hat = "BH")
+#' }
 #' @export
 n.fdr.fisher <- function(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat = "BH") {
   pi0 <- mean(p1 == p2)
