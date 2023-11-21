@@ -14,7 +14,7 @@ power.signtest(n, alpha, p)
 \item{p}{Pr(Y>X), as in Noether (JASA 1987)}
 }
 \value{
-vector of power estimates for two-sided tests
+Vector of power estimates for two-sided tests
 }
 \description{
 Use the Noether (1987) formula to compute the power of the sign test

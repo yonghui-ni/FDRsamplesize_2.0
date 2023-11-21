@@ -27,7 +27,7 @@ average.power.t.test(
 \item{alternative}{one- or two-sided test}
 }
 \value{
-average power estimate for multiple testing procedure
+Average power estimate for multiple testing procedure
 }
 \description{
 Compute average power of many t-tests; Uses classical power formula for t-test; Assumes equal variance and sample size

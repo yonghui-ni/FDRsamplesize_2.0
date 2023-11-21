@@ -14,7 +14,7 @@ power.tcorr(n, alpha, rho)
 \item{rho}{population correlation coefficient (vector)}
 }
 \value{
-vector of power estimates for two-sided tests
+Vector of power estimates for two-sided tests
 }
 \description{
 Compute power of the t-test for non-zero correlation

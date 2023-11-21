@@ -14,7 +14,7 @@ average.power.signrank(n, alpha, p)
 \item{p}{Pr(Y>X), as in Noether (JASA 1987)}
 }
 \value{
-average power estimate for multiple testing procedure
+Average power estimate for multiple testing procedure
 }
 \description{
 Compute average power of many signed-rank tests

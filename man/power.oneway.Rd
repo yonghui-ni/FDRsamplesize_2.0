@@ -16,10 +16,10 @@ power.oneway(n, alpha, theta, k = 2)
 \item{k}{the number of groups to be compared, default k=2}
 }
 \value{
-vector of power estimates for test of equal means
+Vector of power estimates for test of equal means
 }
 \description{
-Compute power of one-way ANOVA;Uses classical power formula for ANOVA;Assumes equal variance and sample size
+Compute power of one-way ANOVA; Uses classical power formula for ANOVA; Assumes equal variance and sample size
 }
 \details{
 For many applications, the null effect is zero for the parameter theta described above

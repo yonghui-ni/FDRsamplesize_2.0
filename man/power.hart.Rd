@@ -2,7 +2,7 @@
 % Please edit documentation in R/power.R
 \name{power.hart}
 \alias{power.hart}
-\title{Compute power for RNA-seq experiments assuming negative binomial distribution}
+\title{Compute power for RNA-seq experiments assuming Negative Binomial distribution}
 \usage{
 power.hart(n, alpha, log.fc, mu, sig)
 }
@@ -18,13 +18,13 @@ power.hart(n, alpha, log.fc, mu, sig)
 \item{sig}{coefficient of variation (CV) per gene (vector, same length as log.fc)}
 }
 \value{
-vector of power estimates for the set of two-sided tests
+Vector of power estimates for the set of two-sided tests
 }
 \description{
-Use the formula of Hart et al (2013) to compute power for comparing RNA-seq expression across two groups assuming a negative binomial distribution
+Use the formula of Hart et al (2013) to compute power for comparing RNA-seq expression across two groups assuming a Negative Binomial distribution
 }
 \details{
-This function is based on equation (1) of Hart et al (2013). It assumes a negative binomial model for RNA-seq read counts and equal sample size per group.
+This function is based on equation (1) of Hart et al (2013). It assumes a Negative Binomial model for RNA-seq read counts and equal sample size per group.
 }
 \examples{
 n.hart = 2*(qnorm(0.975)+qnorm(0.9))^2*(1/20+0.6^2)/(log(2)^2)   # Equation (6) of Hart et al

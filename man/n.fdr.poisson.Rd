@@ -4,7 +4,7 @@
 \alias{n.fdr.poisson}
 \title{Sample size calculation for Poisson data}
 \usage{
-n.fdr.poisson(fdr, pwr, rho, mu0, w = 1, type = "w", pi0.hat = "BH")
+n.fdr.poisson(fdr, pwr, rho, mu0, w, type, pi0.hat = "BH")
 }
 \arguments{
 \item{fdr}{desired FDR (scalar numeric)}
@@ -22,14 +22,14 @@ n.fdr.poisson(fdr, pwr, rho, mu0, w = 1, type = "w", pi0.hat = "BH")
 \item{pi0.hat}{Approximation method for null proportion}
 }
 \value{
-a list with the following components:
+A list with the following components:
 \item{n}{a sample size estimate}
 \item{computed.avepow}{average power}
 \item{desired.avepow}{desired average power}
 \item{desired.fdr}{desired FDR}
 \item{input.pi0}{proportion of tests with a true null hypothesis}
 \item{alpha}{fixed p-value threshold for multiple testing procedure}
-\item{n.its}{numver of iteration}
+\item{n.its}{number of iteration}
 \item{max.its}{maximum number of iteration, default is 50}
 \item{n0}{lower limit for initial sample size range}
 \item{n1}{upper limit for initial sample size range}
@@ -44,5 +44,5 @@ w = rep(0.5,1000);
 n.fdr.poisson(fdr = 0.1, pwr = 0.8, rho = rho, mu0 = mu0, w = w, type = "w", pi0.hat = "BH")
 }
 \references{
-C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4). doi:10.1504/IJCBDD.2013.056830
+C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4).<doi:10.1504/IJCBDD.2013.056830>
 }

@@ -16,10 +16,10 @@ power.cox(n, alpha, logHR, v)
 \item{v}{variance of predictor variable (vector)}
 }
 \value{
-vector of power estimates for two-sided test
+Vector of power estimates for two-sided test
 }
 \description{
-Use the formula of Hseih and Lavori (2000) to compute the power of a single-predictor Cox model
+Use the formula of Hsieh and Lavori (2000) to compute the power of a single-predictor Cox model
 }
 \examples{
 logHR = log(rep(c(1, 2),c(900, 100)));

@@ -14,7 +14,7 @@ average.power.tcorr(n, alpha, rho)
 \item{rho}{population correlation coefficient (vector)}
 }
 \value{
-average power estimate for multiple testing procedure
+Average power estimate for multiple testing procedure
 }
 \description{
 Compute average power of many t-tests for non-zero correlation

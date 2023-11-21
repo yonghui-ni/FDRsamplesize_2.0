@@ -20,15 +20,15 @@ knitr::opts_chunk$set(
 
 The goal of *FDRsamplesize2* is to computer the average power and determine the sample size needed to achieve desired FDR and desired average power. For power calculation, the package covers various statistical test settings,including:
 
-* two-samples t-test
-* one-sample t-test
+* two-samples $t$-test
+* one-sample $t$-test
 * rank-sum test
 * signed-rank test
-* Fisher’s exact test
-* the t-test for correlation
+* Fisher's exact test
+* the $t$-test for correlation
 * comparison of two Poisson distributions
 * comparison of two negative binomial distributions
-* the binomial test
+* the two-proportions $z$-test
 * one-way ANOVA
 * Cox proportional hazards regression
 
@@ -56,7 +56,7 @@ library("FDRsamplesize2")
 
 ## Example
 
-This is a example which shows you how to determine the sample size necessary to identify genes with microarray expression signals that are associated with progression-free survival.A single-predictor Cox regression model will be used to test the association of each gene’s expression with progression-free survival (PFS). We are interested in determining the number of events necessary to identify 80% of genes truly associate with PFS while controlling the FDR at 10% in a setting in which 1% of the genes have a hazard ratio of 2 and a variance of 1.
+This is an example which shows you how to determine the sample size necessary to identify genes with microarray expression signals that are associated with progression-free survival. A single-predictor Cox regression model will be used to test the association of each gene’s expression with progression-free survival (PFS). We are interested in determining the number of events necessary to identify 80% of genes truly associate with PFS while controlling the FDR at 10% in a setting in which 1% of the genes have a hazard ratio of 2 and a variance of 1.
 
 ```{r}
 log.HR=log(rep(c(1,2),c(9900,100)))   # log hazard ratio for each gene
@@ -65,7 +65,7 @@ res=n.fdr.coxph(fdr=0.1, pwr=0.8,logHR=log.HR, v=v, pi0.hat="BH")
 res
 ```
 
-Step by step to calculate power and sample size. This procedure is more flexible for user to plug in self-defined power function and average power calculation function for other statistical tests that not involved in *FDRsamplesize2*
+Step by step to calculate power and sample size. This procedure is more flexible for user to plug in average power function of other statistical tests that are not available in *FDRsamplesize2*.
 ```{r}
 pi0=9900/10000                      # proportion of true null hypothesis
 adj.p=alpha.power.fdr(fdr=0.1,

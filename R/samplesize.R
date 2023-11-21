@@ -43,9 +43,9 @@ n.fdr.tcorr=function(fdr,pwr,rho,pi0.hat="BH")
 
 
 
-#' @title Sample size calculation for Binomial data
+#' @title Sample size calculation for comparing two proportions
 #' @description
-#' Find the sample size needed to have a desired false discovery rate and average power for a large number of two-group comparisons under Binomial distribution.
+#' Find the sample size needed to have a desired false discovery rate and average power for a large number of two-group comparisons using the two proportion z-test.
 #' @param fdr desired FDR (scalar numeric)
 #' @param pwr desired average power (scalar numeric)
 #' @param p1  probability in one group (vector)
@@ -67,12 +67,24 @@ n.fdr.tcorr=function(fdr,pwr,rho,pi0.hat="BH")
 #' set.seed(1234);
 #' p1 = sample(seq(0,0.5,0.1),40,replace = TRUE);
 #' p2 = sample(seq(0.5,1,0.1),40,replace = TRUE);
-#' n.fdr.binomial(fdr = 0.1, pwr = 0.8, p1 = p1, p2 = p2, alternative = "two.sided", pi0.hat = "BH")
+#' n.fdr.twoprop(fdr = 0.1, pwr = 0.8, p1 = p1, p2 = p2, alternative = "two.sided", pi0.hat = "BH")
 #' @export
-n.fdr.binomial <- function(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat = "BH") {
+n.fdr.twoprop <- function(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat = "BH") {
   pi0 <- mean(p1 == p2)
   a <- alpha.power.fdr(fdr, pwr, pi0, pi0.hat)
-  res <- find.sample.size(alpha = a, pwr = pwr, avepow.func = average.power.binomial, p1 = p1, p2 = p2, alternative = alternative)
+  res <- find.sample.size(alpha = a, pwr = pwr, avepow.func = average.power.twoprop, p1 = p1, p2 = p2, alternative = alternative)
+  res$desired.fdr=fdr
+  res$input.pi0=pi0
+  res.names=c("n",
+              "computed.avepow",
+              "desired.avepow",
+              "desired.fdr",
+              "input.pi0",
+              "alpha",
+              "n0","n1",
+              "n.its",
+              "max.its")
+  res=res[res.names]
   return(res)
 }
 
@@ -99,8 +111,8 @@ n.fdr.binomial <- function(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat 
 #' \item{n1}{upper limit for initial sample size range}
 #' @examples
 #' set.seed(1234);
-#' p1 = sample(seq(0,0.5,0.1),40,replace = TRUE);
-#' p2 = sample(seq(0.5,1,0.1),40,replace = TRUE);
+#' p1 = sample(seq(0,0.5,0.1),10,replace = TRUE);
+#' p2 = sample(seq(0.5,1,0.1),10,replace = TRUE);
 #' n.fdr.fisher(fdr = 0.1, pwr = 0.8, p1 = p1, p2 = p2, alternative = "two.sided", pi0.hat = "BH")
 #' @export
 n.fdr.fisher <- function(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat = "BH") {
@@ -151,10 +163,10 @@ n.fdr.fisher <- function(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat = 
 #' w = rep(0.5,1000);
 #' n.fdr.poisson(fdr = 0.1, pwr = 0.8, rho = rho, mu0 = mu0, w = w, type = "w", pi0.hat = "BH")
 #' @export
-n.fdr.poisson <- function(fdr, pwr, rho, mu0, w = 1, type = "w", pi0.hat = "BH") {
+n.fdr.poisson <- function(fdr, pwr, rho, mu0, w, type, pi0.hat = "BH") {
   pi0 <- mean(rho == 1)
   a <- alpha.power.fdr(fdr, pwr, pi0, pi0.hat)
-  res <- find.sample.size(alpha = a, pwr = pwr, avepow.func = average.power.li, rho = rho, mu0 = mu0)
+  res <- find.sample.size(alpha = a, pwr = pwr, avepow.func = average.power.li, rho = rho, mu0 = mu0, w = w, type = type)
   res$desired.fdr=fdr
   res$input.pi0=pi0
   res.names=c("n",
@@ -468,13 +480,25 @@ n.fdr.ttest <- function(fdr, pwr, delta, sigma = 1, type = "two.sample", pi0.hat
   res <- find.sample.size(a, pwr, average.power.t.test,
     delta = delta, sigma = sigma, type = type, alternative = alternative
   )
+  res$desired.fdr=fdr
+  res$input.pi0=pi0
+  res.names=c("n",
+              "computed.avepow",
+              "desired.avepow",
+              "desired.fdr",
+              "input.pi0",
+              "alpha",
+              "n0","n1",
+              "n.its",
+              "max.its")
+  res=res[res.names]
   return(res)
 }
 
 
-#' @title Determines the sample size needed to achieve a desired average power while controlling the FDR at a specified level
+#' @title Determines the sample size needed to achieve the desired FDR and average power
 #' @description
-#' Determines the sample size needed to achieve a desired average power while controlling the FDR at a specified level.
+#' Determines the sample size needed to achieve the desired FDR and average power by given the proportion of true null hypothesis.
 #' @param alpha the fixed p-value threshold  (scalar numeric)
 #' @param pwr desired average power (scalar numeric)
 #' @param avepow.func an R function to compute average power
@@ -551,13 +575,16 @@ find.sample.size <- function(alpha, pwr, avepow.func, n0 = 3, n1 = 6, max.its = 
 #' @return The fixed p-value threshold for multiple testing procedure
 #' @details
 #' To get the fixed p-value threshold for multiple testing procedure, 4 approximation methods are provided, they are Benjamini & Hochberg procedure (1995), Jung's formula (2005),
-#' method of using p-value histogram height (HH) and method of using p-value histogram mean (HM).
+#' method of using p-value histogram height (HH) and method of using p-value histogram mean (HM). For last two methods' details, see Ni Y, Onar-Thomas A, Pounds S.  "Computing Power and Sample Size for the False Discovery Rate in Multiple Applications"
 #' @references
-#' Pounds, Stan, and Cheng Cheng. "Sample size determination for the false discovery rate." Bioinformatics 21.23 (2005): 4263-4271.
+#' Pounds S and Cheng C, "Sample size determination for the false discovery rate." Bioinformatics 21.23 (2005): 4263-4271.
 #'
 #' Gadbury GL, et al. (2004) Power and sample size estimation in high dimensional biology. Statistical Methods in Medical Research 13(4):325-38.
 #'
-#' Jung, Sin-Ho."Sample size for FDR-control in microarray data analysis." Bioinformatics 21.14 (2005): 3097-3104.
+#' Jung,Sin-Ho."Sample size for FDR-control in microarray data analysis." Bioinformatics 21.14 (2005): 3097-3104.
+#'
+#' Ni Y, Onar-Thomas A, Pounds S.  "Computing Power and Sample Size for the False Discovery Rate in Multiple Applications", Manuscript.
+#'
 #' @examples
 #' alpha.power.fdr(fdr = 0.1, pwr = 0.9, pi0=0.9, method = "HH")
 #' @export

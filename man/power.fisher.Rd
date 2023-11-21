@@ -18,11 +18,11 @@ power.fisher(p1, p2, n, alpha, alternative)
 \item{alternative}{one- or two-sided test, must be one of "greater", "less", or "two.sided"}
 }
 \value{
-power estimate for one- or two-sided tests
+Power estimate for one- or two-sided tests
 }
 \description{
 Compute power for Fisher's exact test
 }
 \examples{
-power.fisher(p1 = 0.5, p2 = 0.9, n=30, alpha = 0.05, alternative = 'two.sided')
+power.fisher(p1 = 0.5, p2 = 0.9, n=20, alpha = 0.05, alternative = 'two.sided')
 }

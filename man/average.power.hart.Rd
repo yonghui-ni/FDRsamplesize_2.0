@@ -2,7 +2,7 @@
 % Please edit documentation in R/average_power.R
 \name{average.power.hart}
 \alias{average.power.hart}
-\title{Compute average power for RNA-seq experiments assuming negative binomial distribution}
+\title{Compute average power for RNA-seq experiments assuming Negative Binomial distribution}
 \usage{
 average.power.hart(n, alpha, log.fc, mu, sig)
 }
@@ -18,17 +18,23 @@ average.power.hart(n, alpha, log.fc, mu, sig)
 \item{sig}{coefficient of variation (CV) per gene (vector, same length as log.fc)}
 }
 \value{
-average power estimate for multiple testing procedure
+Average power estimate for multiple testing procedure
 }
 \description{
-Compute average power for RNA-seq experiments assuming negative binomial distribution
+Compute average power for RNA-seq experiments assuming Negative Binomial distribution
 }
 \details{
-The power function is based on equation (1) of Hart et al (2013). It assumes a negative binomial model for RNA-seq read counts and equal sample size per group.
+The power function is based on equation (1) of Hart et al (2013). It assumes a Negative Binomial model for RNA-seq read counts and equal sample size per group.
 }
 \examples{
 logFC = log(rep(c(1,2),c(900,100)));
 mu = rep(5,1000);
 sig = rep(0.6,1000);
 average.power.hart(n = 50, alpha = 0.05,log.fc = logFC, mu = mu, sig = sig)
+}
+\references{
+SN Hart, TM Therneau, Y Zhang, GA Poland, and J-P Kocher (2013). Calculating Sample Size Estimates for RNA Sequencing Data. Journal of Computational Biology 20: 970-978.
+}
+\seealso{
+\code{\link{power.hart}} for more details about power calculation of data under Negative Binomial distribution
 }

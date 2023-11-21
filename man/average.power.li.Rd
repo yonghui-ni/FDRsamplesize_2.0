@@ -2,9 +2,9 @@
 % Please edit documentation in R/average_power.R
 \name{average.power.li}
 \alias{average.power.li}
-\title{Compute Average Power for RNA-Seq Experiments Assuming Poisson Distribution}
+\title{Compute average power for RNA-Seq experiments assuming Poisson distribution}
 \usage{
-average.power.li(n, alpha, rho, mu0, w = 1, type = "w")
+average.power.li(n, alpha, rho, mu0, w, type)
 }
 \arguments{
 \item{n}{per-group sample size}
@@ -20,7 +20,7 @@ average.power.li(n, alpha, rho, mu0, w = 1, type = "w")
 \item{type}{type of test: "w" for Wald, "s" for score, "lw" for log-transformed Wald, "ls" for log-transformed score}
 }
 \value{
-average power estimate for multiple testing procedure
+Average power estimate for multiple testing procedure
 }
 \description{
 Use the formula of Li et al (2013) to compute power for comparing RNA-seq expression across two groups assuming the Poisson distribution.
@@ -35,5 +35,8 @@ w = rep(0.5,1000);
 average.power.li(n = 50, alpha = 0.05, rho = rho, mu0 = mu0, w = w, type = "w")
 }
 \references{
-C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4). doi:10.1504/IJCBDD.2013.056830
+C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4).<doi:10.1504/IJCBDD.2013.056830>
+}
+\seealso{
+\code{\link{power.li}} for more details about power calculation of data under Poisson distribution
 }

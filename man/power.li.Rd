@@ -2,9 +2,9 @@
 % Please edit documentation in R/power.R
 \name{power.li}
 \alias{power.li}
-\title{Compute power for RNA-Seq experiments assuming poisson distribution}
+\title{Compute power for RNA-Seq experiments assuming Poisson distribution}
 \usage{
-power.li(n, alpha, rho, mu0, w = 1, type = "w")
+power.li(n, alpha, rho, mu0, w, type)
 }
 \arguments{
 \item{n}{per-group sample size}
@@ -20,7 +20,7 @@ power.li(n, alpha, rho, mu0, w = 1, type = "w")
 \item{type}{type of test: "w" for Wald, "s" for score, "lw" for log-transformed Wald, "ls" for log-transformed score}
 }
 \value{
-vector of power estimates for two-sided tests
+Vector of power estimates for two-sided tests
 }
 \description{
 Use the formula of Li et al (2013) to compute power for comparing RNA-seq expression across two groups assuming the Poisson distribution
@@ -29,8 +29,9 @@ Use the formula of Li et al (2013) to compute power for comparing RNA-seq expres
 This function computes the power for each of a series of two-sided tests defined by the input parameters. The power is based on the sample size formulas in equations (10-13) of Li et al (2013). Also, note that the null.effect is set to 1 in the examples because the usual null hypothesis is that the fold-change = 1.
 }
 \examples{
-power.li(88, 0.05, 1.25, 5, 0.5,"w") # recapitulate 80\% power in Table 1 of Li et al (2013)'
+power.li(n = 88, alpha = 0.05, rho = 1.25, mu0 = 5, w = 0.5,type = "w")
+# recapitulate 80\% power in Table 1 of Li et al (2013)
 }
 \references{
-C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4). doi:10.1504/IJCBDD.2013.056830
+C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4). <doi:10.1504/IJCBDD.2013.056830>
 }

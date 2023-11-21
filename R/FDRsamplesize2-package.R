@@ -1,6 +1,6 @@
 #' @keywords internal
 "_PACKAGE"
 
-#' @docType package
-#' @name FDRsamplesize2
+## usethis namespace: start
+## usethis namespace: end
 NULL

@@ -10,6 +10,8 @@
 #' logHR = log(rep(c(1, 2),c(900, 100)));
 #' v = rep(1, 1000);
 #' average.power.coxph(n = 50, alpha = 0.05, logHR = logHR, v = v)
+#' @references Hsieh, FY and Lavori, Philip W (2000) Sample-size calculations for the Cox proportional hazards regression model with non-binary covariates. Controlled Clinical Trials 21(6):552-560.
+#' @seealso \code{\link{power.cox}} for more details about power calculation of single-predictor Cox regression model
 #' @export
 average.power.coxph <- function(n, alpha, logHR, v) {
   m <- length(logHR)
@@ -31,11 +33,13 @@ average.power.coxph <- function(n, alpha, logHR, v) {
 #' @return Average power estimate for multiple testing procedure
 #' @details
 #' The power function is based on equation (1) of Hart et al (2013). It assumes a Negative Binomial model for RNA-seq read counts and equal sample size per group.
+#' @references SN Hart, TM Therneau, Y Zhang, GA Poland, and J-P Kocher (2013). Calculating Sample Size Estimates for RNA Sequencing Data. Journal of Computational Biology 20: 970-978.
 #' @examples
 #' logFC = log(rep(c(1,2),c(900,100)));
 #' mu = rep(5,1000);
 #' sig = rep(0.6,1000);
 #' average.power.hart(n = 50, alpha = 0.05,log.fc = logFC, mu = mu, sig = sig)
+#' @seealso \code{\link{power.hart}} for more details about power calculation of data under Negative Binomial distribution
 #' @export
 average.power.hart <- function(n, alpha, log.fc, mu, sig) {
   alt <- (log.fc != 0)
@@ -121,7 +125,7 @@ average.power.signrank <- function(n, alpha, p) {
 
 
 
-#' @title Compute Average Power for RNA-Seq Experiments Assuming Poisson Distribution
+#' @title Compute average power for RNA-Seq experiments assuming Poisson distribution
 #' @description
 #' Use the formula of Li et al (2013) to compute power for comparing RNA-seq expression across two groups assuming the Poisson distribution.
 #' @param n per-group sample size
@@ -139,8 +143,9 @@ average.power.signrank <- function(n, alpha, p) {
 #' mu0 = rep(5,1000);
 #' w = rep(0.5,1000);
 #' average.power.li(n = 50, alpha = 0.05, rho = rho, mu0 = mu0, w = w, type = "w")
+#' @seealso \code{\link{power.li}} for more details about power calculation of data under Poisson distribution
 #' @export
-average.power.li <- function(n, alpha, rho, mu0, w = 1, type = "w") {
+average.power.li <- function(n, alpha, rho, mu0, w, type) {
   alt <- (rho != 1)
   rho <- rho[alt]
   pwr <- power.li(n, alpha = alpha, rho = rho, mu0 = mu0, w = w, type = type)
@@ -158,9 +163,9 @@ average.power.li <- function(n, alpha, rho, mu0, w = 1, type = "w") {
 #' @return Average power estimate for multiple testing procedure
 #' @examples
 #' set.seed(1234);
-#' p1 = sample(seq(0,0.5,0.1),40,replace = TRUE);
-#' p2 = sample(seq(0.5,1,0.1),40,replace = TRUE);
-#' average.power.fisher(p1 = p1,p2 = p2,n = 30,alpha = 0.05,alternative = "two.sided")
+#' p1 = sample(seq(0,0.5,0.1),10,replace = TRUE);
+#' p2 = sample(seq(0.5,1,0.1),10,replace = TRUE);
+#' average.power.fisher(p1 = p1,p2 = p2,n = 20,alpha = 0.05,alternative = "two.sided")
 #' @importFrom stats dbinom fisher.test
 #' @export
 average.power.fisher <- function(p1, p2, n, alpha, alternative)
@@ -204,7 +209,7 @@ average.power.tcorr=function(n,alpha,rho)
 }
 
 
-#' @title Computer average power of many Binomial comparisons
+#' @title Computer average power of many two proportion z-tests
 #' @param n  per-group sample size (scalar)
 #' @param p1  probability in one group (vector)
 #' @param p2  probability in other group (vector)
@@ -215,10 +220,10 @@ average.power.tcorr=function(n,alpha,rho)
 #' set.seed(1234);
 #' p1 = sample(seq(0,0.5,0.1),40,replace = TRUE);
 #' p2 = sample(seq(0.5,1,0.1),40,replace = TRUE);
-#' average.power.binomial(n = 30, alpha = 0.05, p1 = p1,p2 = p2,alternative="two.sided")
+#' average.power.twoprop(n = 30, alpha = 0.05, p1 = p1,p2 = p2,alternative="two.sided")
 #' @importFrom stats power.prop.test
 #' @export
-average.power.binomial <- function(n, alpha, p1, p2, alternative) {
+average.power.twoprop <- function(n, alpha, p1, p2, alternative) {
   alt <- (p1 != p2)
   p1 <- p1[alt]
   p2 <- p2[alt]

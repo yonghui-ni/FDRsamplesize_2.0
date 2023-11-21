@@ -16,7 +16,7 @@ average.power.oneway(n, alpha, theta, k)
 \item{k}{the number of groups to be compared}
 }
 \value{
-average power estimate for multiple testing procedure
+Average power estimate for multiple testing procedure
 }
 \description{
 Compute average power of many one-way ANOVA tests

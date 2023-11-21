@@ -16,7 +16,7 @@ average.power.coxph(n, alpha, logHR, v)
 \item{v}{variance of predictor variable (vector)}
 }
 \value{
-average power estimate for multiple testing procedure
+Average power estimate for multiple testing procedure
 }
 \description{
 Compute the average power of many Cox regression models for a given number of events, p-value threshold, vector of effect sizes (log hazard ratio),and variance of predictor variables
@@ -25,4 +25,10 @@ Compute the average power of many Cox regression models for a given number of ev
 logHR = log(rep(c(1, 2),c(900, 100)));
 v = rep(1, 1000);
 average.power.coxph(n = 50, alpha = 0.05, logHR = logHR, v = v)
+}
+\references{
+Hsieh, FY and Lavori, Philip W (2000) Sample-size calculations for the Cox proportional hazards regression model with non-binary covariates. Controlled Clinical Trials 21(6):552-560.
+}
+\seealso{
+\code{\link{power.cox}} for more details about power calculation of single-predictor Cox regression model
 }

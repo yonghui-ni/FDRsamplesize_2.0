@@ -20,14 +20,14 @@ n.fdr.fisher(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat = "BH")
 \item{pi0.hat}{approximation method for null proportion}
 }
 \value{
-a list with the following components:
+A list with the following components:
 \item{n}{a sample size estimate}
 \item{computed.avepow}{average power}
 \item{desired.avepow}{desired average power}
 \item{desired.fdr}{desired FDR}
 \item{input.pi0}{proportion of tests with a true null hypothesis}
 \item{alpha}{fixed p-value threshold for multiple testing procedure}
-\item{n.its}{numver of iteration}
+\item{n.its}{number of iteration}
 \item{max.its}{maximum number of iteration, default is 50}
 \item{n0}{lower limit for initial sample size range}
 \item{n1}{upper limit for initial sample size range}
@@ -37,7 +37,7 @@ Find the sample size needed to have a desired false discovery rate and average p
 }
 \examples{
 set.seed(1234);
-p1 = sample(seq(0,0.5,0.1),40,replace = TRUE);
-p2 = sample(seq(0.5,1,0.1),40,replace = TRUE);
+p1 = sample(seq(0,0.5,0.1),10,replace = TRUE);
+p2 = sample(seq(0.5,1,0.1),10,replace = TRUE);
 n.fdr.fisher(fdr = 0.1, pwr = 0.8, p1 = p1, p2 = p2, alternative = "two.sided", pi0.hat = "BH")
 }

@@ -52,7 +52,7 @@ power.hart <- function(n,
 
 #' @title Compute power of the rank-sum test
 #' @description
-#' Compute power of rank-sum test;Uses formula of Noether (JASA 1987)
+#' Compute power of rank-sum test; Uses formula of Noether (JASA 1987)
 #' @param n sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
@@ -79,7 +79,7 @@ power.ranksum <- function(n, alpha, p) {
 
 #' @title Compute power of one-way ANOVA
 #' @description
-#' Compute power of one-way ANOVA;Uses classical power formula for ANOVA;Assumes equal variance and sample size
+#' Compute power of one-way ANOVA; Uses classical power formula for ANOVA; Assumes equal variance and sample size
 #' @param n per-group sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param theta sum of ((group mean - overall mean)/stdev)^2 across all groups for each hypothesis test(vector)
@@ -165,15 +165,16 @@ power.signrank <- function(n,
 #' @return Vector of power estimates for two-sided tests
 #' @references C-I Li, P-F Su, Y Guo, and Y Shyr (2013). Sample size calculation for differential expression analysis of RNA-seq data under Poisson distribution. Int J Comput Biol Drug Des 6(4). <doi:10.1504/IJCBDD.2013.056830>
 #' @examples
-#' power.li(88, 0.05, 1.25, 5, 0.5,"w") # recapitulate 80% power in Table 1 of Li et al (2013)'
+#' power.li(n = 88, alpha = 0.05, rho = 1.25, mu0 = 5, w = 0.5,type = "w")
+#' # recapitulate 80% power in Table 1 of Li et al (2013)
 #' @importFrom stats pnorm qnorm
 #' @export
 power.li <- function(n,
                      alpha,
                      rho,
                      mu0,
-                     w = 1,
-                     type = "w")
+                     w ,
+                     type)
 {
   z.alpha <- qnorm(alpha / 2)
   if (!is.element(type, c("w", "lw", "s", "ls"))) {
@@ -214,7 +215,7 @@ power.li <- function(n,
 #' @param alternative one- or two-sided test, must be one of "greater", "less", or "two.sided"
 #' @return Power estimate for one- or two-sided tests
 #' @examples
-#' power.fisher(p1 = 0.5, p2 = 0.9, n=30, alpha = 0.05, alternative = 'two.sided')
+#' power.fisher(p1 = 0.5, p2 = 0.9, n=20, alpha = 0.05, alternative = 'two.sided')
 #' @export
 #' @importFrom stats dbinom fisher.test
 power.fisher <- function(p1, p2, n, alpha, alternative)

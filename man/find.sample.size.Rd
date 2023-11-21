@@ -2,7 +2,7 @@
 % Please edit documentation in R/samplesize.R
 \name{find.sample.size}
 \alias{find.sample.size}
-\title{Determines the sample size needed to achieve a desired average power while controlling the FDR at a specified level}
+\title{Determines the sample size needed to achieve the desired FDR and average power}
 \usage{
 find.sample.size(alpha, pwr, avepow.func, n0 = 3, n1 = 6, max.its = 50, ...)
 }
@@ -22,18 +22,18 @@ find.sample.size(alpha, pwr, avepow.func, n0 = 3, n1 = 6, max.its = 50, ...)
 \item{...}{additional arguments to average power function}
 }
 \value{
-a list with the following components:
+A list with the following components:
 \item{n}{a sample size estimate}
 \item{computed.avepow}{average power}
 \item{desired.avepow}{desired average power}
 \item{alpha}{fixed p-value threshold for multiple testing procedure}
-\item{n.its}{numver of iteration}
+\item{n.its}{number of iteration}
 \item{max.its}{maximum number of iteration, default is 50}
 \item{n0}{lower limit for initial sample size range}
 \item{n1}{upper limit for initial sample size range}
 }
 \description{
-Determines the sample size needed to achieve a desired average power while controlling the FDR at a specified level.
+Determines the sample size needed to achieve the desired FDR and average power by given the proportion of true null hypothesis.
 }
 \examples{
 average.power.signtest;

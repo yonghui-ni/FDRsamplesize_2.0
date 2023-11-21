@@ -11,21 +11,21 @@ n.fdr.oneway(fdr, pwr, theta, k, pi0.hat = "BH")
 
 \item{pwr}{desired average power (scalar numeric)}
 
-\item{theta}{sum of ((group mean - overall mean)/stdev)^2 across all groups for each hypothesis test (vector)}
+\item{theta}{sum of ((group mean - overall mean)/stdev)^2 across all groups for each hypothesis test (vector)}
 
 \item{k}{the number of groups to be compared}
 
 \item{pi0.hat}{approximation method for null proportion}
 }
 \value{
-a list with the following components:
+A list with the following components:
 \item{n}{a sample size estimate}
 \item{computed.avepow}{average power}
 \item{desired.avepow}{desired average power}
 \item{desired.fdr}{desired FDR}
 \item{input.pi0}{proportion of tests with a true null hypothesis}
 \item{alpha}{fixed p-value threshold for multiple testing procedure}
-\item{n.its}{numver of iteration}
+\item{n.its}{number of iteration}
 \item{max.its}{maximum number of iteration, default is 50}
 \item{n0}{lower limit for initial sample size range}
 \item{n1}{upper limit for initial sample size range}

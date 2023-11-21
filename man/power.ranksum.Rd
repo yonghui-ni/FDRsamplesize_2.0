@@ -14,10 +14,10 @@ power.ranksum(n, alpha, p)
 \item{p}{Pr(Y>X), as in Noether (JASA 1987)}
 }
 \value{
-vector of power estimates for two-sided tests
+Vector of power estimates for two-sided tests
 }
 \description{
-Compute power of rank-sum test;Uses formula of Noether (JASA 1987)
+Compute power of rank-sum test; Uses formula of Noether (JASA 1987)
 }
 \details{
 In most applications, the null effect size will be designated by p = 0.5

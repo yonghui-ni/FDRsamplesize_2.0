@@ -2,7 +2,7 @@
 % Please edit documentation in R/samplesize.R
 \name{n.fdr.negbin}
 \alias{n.fdr.negbin}
-\title{Sample size calculation for negative binomial data}
+\title{Sample size calculation for Negative Binomial data}
 \usage{
 n.fdr.negbin(fdr, pwr, log.fc, mu, sig, pi0.hat = "BH")
 }
@@ -20,14 +20,14 @@ n.fdr.negbin(fdr, pwr, log.fc, mu, sig, pi0.hat = "BH")
 \item{pi0.hat}{approximation method for null proportion}
 }
 \value{
-a list with the following components:
+A list with the following components:
 \item{n}{a sample size estimate}
 \item{computed.avepow}{average power}
 \item{desired.avepow}{desired average power}
 \item{desired.fdr}{desired FDR}
 \item{input.pi0}{proportion of tests with a true null hypothesis}
 \item{alpha}{fixed p-value threshold for multiple testing procedure}
-\item{n.its}{numver of iteration}
+\item{n.its}{number of iteration}
 \item{max.its}{maximum number of iteration, default is 50}
 \item{n0}{lower limit for initial sample size range}
 \item{n1}{upper limit for initial sample size range}

@@ -11,15 +11,15 @@ determine the sample size needed to achieve desired FDR and desired
 average power. For power calculation, the package covers various
 statistical test settings,including:
 
-- two-samples t-test
-- one-sample t-test
+- two-samples $t$-test
+- one-sample $t$-test
 - rank-sum test
 - signed-rank test
 - Fisher’s exact test
-- the t-test for correlation
+- the $t$-test for correlation
 - comparison of two Poisson distributions
 - comparison of two negative binomial distributions
-- the binomial test
+- the two-proportions $z$-test
 - one-way ANOVA
 - Cox proportional hazards regression
 
@@ -48,9 +48,9 @@ library("FDRsamplesize2")
 
 ## Example
 
-This is a example which shows you how to determine the sample size
+This is an example which shows you how to determine the sample size
 necessary to identify genes with microarray expression signals that are
-associated with progression-free survival.A single-predictor Cox
+associated with progression-free survival. A single-predictor Cox
 regression model will be used to test the association of each gene’s
 expression with progression-free survival (PFS). We are interested in
 determining the number of events necessary to identify 80% of genes
@@ -94,9 +94,8 @@ res
 ```
 
 Step by step to calculate power and sample size. This procedure is more
-flexible for user to plug in self-defined power function and average
-power calculation function for other statistical tests that not involved
-in *FDRsamplesize2*
+flexible for user to plug in average power function of other statistical
+tests that are not available in *FDRsamplesize2*.
 
 ``` r
 pi0=9900/10000                      # proportion of true null hypothesis
