@@ -22,7 +22,7 @@ Vector of power estimates for two-sided tests
 Use the Noether (1987) formula to compute the power of the signed-rank test
 }
 \details{
-In most applications, the null effect size will be designated by p = 0.5
+In most applications, the null effect size will be designated by p1 = p2 = 0.5
 }
 \examples{
 p1 = rep(c(0.8,0.5),c(100,900));

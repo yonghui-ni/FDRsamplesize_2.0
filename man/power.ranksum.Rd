@@ -7,7 +7,7 @@
 power.ranksum(n, alpha, p)
 }
 \arguments{
-\item{n}{sample size (scalar)}
+\item{n}{per-group sample size (scalar)}
 
 \item{alpha}{p-value threshold (scalar)}
 

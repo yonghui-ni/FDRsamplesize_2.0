@@ -25,3 +25,6 @@ Compute average power of many one-way ANOVA tests
 theta=rep(c(2,0),c(100,900));
 average.power.oneway(n = 50, alpha = 0.05, theta = theta, k = 2)
 }
+\seealso{
+\code{\link{power.oneway}} for more details about power calculation of one-way ANOVA
+}

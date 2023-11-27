@@ -53,7 +53,7 @@ power.hart <- function(n,
 #' @title Compute power of the rank-sum test
 #' @description
 #' Compute power of rank-sum test; Uses formula of Noether (JASA 1987)
-#' @param n sample size (scalar)
+#' @param n per-group sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
 #' @details
@@ -130,7 +130,7 @@ power.signtest <- function(n, alpha, p) {
 #' @param p1 Pr(X>0), as in Noether (JASA 1987)
 #' @param p2 Pr(X+X'>0), as in Noether (JASA 1987)
 #' @details
-#' In most applications, the null effect size will be designated by p = 0.5
+#' In most applications, the null effect size will be designated by p1 = p2 = 0.5
 #' @return Vector of power estimates for two-sided tests
 #' @references Noether, Gottfried E (1987) Sample size determination for some common nonparametric tests. Journal of the American Statistical Association, 82:645-647.
 #' @examples

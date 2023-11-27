@@ -51,13 +51,14 @@ average.power.hart <- function(n, alpha, log.fc, mu, sig) {
 
 
 #' @title Compute average power of rank-sum tests
-#' @param n sample size (scalar)
+#' @param n per-group sample size (scalar)
 #' @param alpha p-value threshold (scalar)
 #' @param p Pr(Y>X), as in Noether (JASA 1987)
 #' @return Average power estimate for multiple testing procedure
 #' @examples
 #' p = rep(c(0.8,0.5),c(100,900));
 #' average.power.ranksum(n = 50, alpha = 0.05, p=p)
+#' @seealso \code{\link{power.ranksum}} for more details about power calculation of rank-sum test
 #' @export
 average.power.ranksum <- function(n, alpha, p) {
   alt <- (p != 0.5)
@@ -77,6 +78,7 @@ average.power.ranksum <- function(n, alpha, p) {
 #' @examples
 #' theta=rep(c(2,0),c(100,900));
 #' average.power.oneway(n = 50, alpha = 0.05, theta = theta, k = 2)
+#' @seealso \code{\link{power.oneway}} for more details about power calculation of one-way ANOVA
 #' @export
 average.power.oneway <- function(n, alpha, theta, k) {
   alt <- (theta != 0)
@@ -95,6 +97,7 @@ average.power.oneway <- function(n, alpha, theta, k) {
 #' @examples
 #' p = rep(c(0.8,0.5),c(100,900));
 #' average.power.signtest(n = 50, alpha = 0.05, p=p)
+#' @seealso \code{\link{power.signtest}} for more details about power calculation of sign test
 #' @importFrom stats qnorm pnorm
 #' @export
 average.power.signtest <- function(n, alpha, p) {
@@ -116,6 +119,7 @@ average.power.signtest <- function(n, alpha, p) {
 #' p1 = rep(c(0.8,0.5),c(100,900));
 #' p2 = rep(c(0.8,0.5),c(100,900));
 #' average.power.signrank(n = 50, alpha = 0.05, p1 = p1, p2 = p2)
+#' @seealso \code{\link{power.signrank}} for more details about power calculation of signed-rank test
 #' @export
 average.power.signrank <- function(n, alpha, p1, p2) {
   alt <- intersect(which(p1 == 0.5),which(p2 == 0.5))
@@ -169,6 +173,7 @@ average.power.li <- function(n, alpha, rho, mu0, w, type) {
 #' p1 = sample(seq(0,0.5,0.1),5,replace = TRUE);
 #' p2 = sample(seq(0.5,1,0.1),5,replace = TRUE);
 #' average.power.fisher(p1 = p1,p2 = p2,n = 20,alpha = 0.05,alternative = "two.sided")
+#' @seealso \code{\link{power.fisher}} for more details about power calculation of Fisher's exact test
 #' @importFrom stats dbinom fisher.test
 #' @export
 average.power.fisher <- function(p1, p2, n, alpha, alternative)
@@ -200,6 +205,7 @@ average.power.fisher <- function(p1, p2, n, alpha, alternative)
 #' @examples
 #' rho = rep(c(0.3,0),c(100,900));
 #' average.power.tcorr(n = 50, alpha = 0.05, rho = rho)
+#' @seealso \code{\link{power.tcorr}} for more details about power calculation of t-test for non-zero correlation
 #' @export
 average.power.tcorr=function(n,alpha,rho)
 

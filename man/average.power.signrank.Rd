@@ -26,3 +26,6 @@ p1 = rep(c(0.8,0.5),c(100,900));
 p2 = rep(c(0.8,0.5),c(100,900));
 average.power.signrank(n = 50, alpha = 0.05, p1 = p1, p2 = p2)
 }
+\seealso{
+\code{\link{power.signrank}} for more details about power calculation of signed-rank test
+}

@@ -36,6 +36,7 @@ A list with the following components:
 Determines the sample size needed to achieve the desired FDR and average power by given the proportion of true null hypothesis.
 }
 \examples{
+#Here, calculating the sample size for the study involving many sign tests
 average.power.signtest;
 p.adj = 0.001;
 p = rep(c(0.8,0.5), c(100,9900));

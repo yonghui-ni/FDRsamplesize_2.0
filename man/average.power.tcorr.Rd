@@ -26,3 +26,6 @@ For many applications, the null.effect is rho = 0
 rho = rep(c(0.3,0),c(100,900));
 average.power.tcorr(n = 50, alpha = 0.05, rho = rho)
 }
+\seealso{
+\code{\link{power.tcorr}} for more details about power calculation of t-test for non-zero correlation
+}
