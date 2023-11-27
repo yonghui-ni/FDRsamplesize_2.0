@@ -35,7 +35,7 @@ devtools::install_github("yonghui-ni/FDRsamplesize_2.0")
 Or from CRAN:
 
 ``` r
-# install.packages("FDEsamplesize2")
+install.packages("FDEsamplesize2")
 ```
 
 ## Load package
