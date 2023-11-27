@@ -11,7 +11,7 @@ n.fdr.signtest(fdr, pwr, p, pi0.hat = "BH")
 
 \item{pwr}{desired average power (scalar numeric)}
 
-\item{p}{Pr(Y>X), as in Noether (JASA 1987)}
+\item{p}{Pr(X>0), as in Noether (JASA 1987)}
 
 \item{pi0.hat}{approximation method for null proportion}
 }

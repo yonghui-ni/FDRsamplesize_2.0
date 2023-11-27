@@ -8,4 +8,13 @@
 \description{
 Defines a collection of functions to compute average power and sample size for studies that use the false discovery rate as the final measure of statistical significance.
 }
+\author{
+\strong{Maintainer}: Yonghui Ni \email{Yonghui.Ni@STJUDE.ORG}
+
+Authors:
+\itemize{
+  \item Stanley Pounds \email{Stanley.Pounds@STJUDE.ORG}
+}
+
+}
 \keyword{internal}

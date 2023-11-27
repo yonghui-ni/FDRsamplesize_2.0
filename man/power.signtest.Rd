@@ -11,7 +11,7 @@ power.signtest(n, alpha, p)
 
 \item{alpha}{p-value threshold (scalar)}
 
-\item{p}{Pr(Y>X), as in Noether (JASA 1987)}
+\item{p}{Pr(X>0), as in Noether (JASA 1987)}
 }
 \value{
 Vector of power estimates for two-sided tests

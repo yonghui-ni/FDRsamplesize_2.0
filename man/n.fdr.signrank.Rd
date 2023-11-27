@@ -4,14 +4,16 @@
 \alias{n.fdr.signrank}
 \title{Sample size calculation for signed-rank tests}
 \usage{
-n.fdr.signrank(fdr, pwr, p, pi0.hat = "BH")
+n.fdr.signrank(fdr, pwr, p1, p2, pi0.hat = "BH")
 }
 \arguments{
 \item{fdr}{desired FDR (scalar numeric)}
 
 \item{pwr}{desired average power (scalar numeric)}
 
-\item{p}{Pr(Y>X), as in Noether (JASA 1987)}
+\item{p1}{Pr(X>0), as in Noether (JASA 1987)}
+
+\item{p2}{Pr(X+X'>0), as in Noether (JASA 1987)}
 
 \item{pi0.hat}{approximation method for null proportion}
 }
@@ -32,8 +34,9 @@ A list with the following components:
 Find the sample size needed to have a desired false discovery rate and average power for a large number of signed-rank tests.
 }
 \examples{
-p = rep(c(0.8,0.5),c(100,900));
-n.fdr.signrank(fdr = 0.1, pwr = 0.8, p = p, pi0.hat = "BH")
+p1 = rep(c(0.8,0.5),c(100,900));
+p2 = rep(c(0.8,0.5),c(100,900));
+n.fdr.signrank(fdr = 0.1, pwr = 0.8, p1 = p1, p2 = p2, pi0.hat = "BH")
 }
 \references{
 Noether, Gottfried E (1987) Sample size determination for some common nonparametric tests. Journal of the American Statistical Association, 82:645-647.

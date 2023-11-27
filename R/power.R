@@ -102,7 +102,7 @@ power.oneway <- function(n, alpha, theta, k = 2) {
 #' Use the Noether (1987) formula to compute the power of the sign test
 #' @param n sample size (scalar)
 #' @param alpha p-value threshold (scalar)
-#' @param p Pr(Y>X), as in Noether (JASA 1987)
+#' @param p Pr(X>0), as in Noether (JASA 1987)
 #' @details
 #' In most applications, the null effect size will be designated by p = 0.5
 #' @return Vector of power estimates for two-sided tests
@@ -127,21 +127,24 @@ power.signtest <- function(n, alpha, p) {
 #' Use the Noether (1987) formula to compute the power of the signed-rank test
 #' @param n sample size (scalar)
 #' @param alpha p-value threshold (scalar)
-#' @param p Pr(Y>X), as in Noether (JASA 1987)
+#' @param p1 Pr(X>0), as in Noether (JASA 1987)
+#' @param p2 Pr(X+X'>0), as in Noether (JASA 1987)
 #' @details
 #' In most applications, the null effect size will be designated by p = 0.5
 #' @return Vector of power estimates for two-sided tests
 #' @references Noether, Gottfried E (1987) Sample size determination for some common nonparametric tests. Journal of the American Statistical Association, 82:645-647.
 #' @examples
-#' p = rep(c(0.8,0.5),c(100,900));
-#' res = power.signtest(n = 50, alpha = 0.05, p = p)
+#' p1 = rep(c(0.8,0.5),c(100,900));
+#' p2 = rep(c(0.8,0.5),c(100,900));
+#' res = power.signrank(n = 50, alpha = 0.05, p1 = p1, p2 = p2)
 #' @importFrom stats pnorm qnorm
 #' @export
 power.signrank <- function(n,
                            alpha,
-                           p) {
+                           p1,
+                           p2) {
   mu0 <- 0.25 * n * (n + 1)
-  mu1 <- 0.5 * p * n * (n + 1)
+  mu1 <- n*p1 + 0.5 * p2 * n * (n - 1)
   delta <- (mu1 - mu0)
   sig2 <- n * (n + 1) * (2 * n + 1) / 24
   sig <- sqrt(sig2)

@@ -109,16 +109,19 @@ average.power.signtest <- function(n, alpha, p) {
 #' @title Compute average power of many signed-rank tests
 #' @param n sample size (scalar)
 #' @param alpha p-value threshold (scalar)
-#' @param p Pr(Y>X), as in Noether (JASA 1987)
+#' @param p1 Pr(X>0), as in Noether (JASA 1987)
+#' @param p2 Pr(X+X'>0), as in Noether (JASA 1987)
 #' @return Average power estimate for multiple testing procedure
 #' @examples
-#' p = rep(c(0.8,0.5),c(100,900));
-#' average.power.signrank(n = 50, alpha = 0.05, p = p)
+#' p1 = rep(c(0.8,0.5),c(100,900));
+#' p2 = rep(c(0.8,0.5),c(100,900));
+#' average.power.signrank(n = 50, alpha = 0.05, p1 = p1, p2 = p2)
 #' @export
-average.power.signrank <- function(n, alpha, p) {
-  alt <- (p != 0.5)
-  p <- p[alt]
-  pwr <- power.signrank(n, alpha, p)
+average.power.signrank <- function(n, alpha, p1, p2) {
+  alt <- intersect(which(p1 == 0.5),which(p2 == 0.5))
+  p1 <- p1[-alt]
+  p2 <- p2[-alt]
+  pwr <- power.signrank(n, alpha=alpha, p1=p1 ,p2=p2)
   res <- mean(pwr)
   return(res)
 }
@@ -162,12 +165,10 @@ average.power.li <- function(n, alpha, rho, mu0, w, type) {
 #' @param alternative one- or two-sided test
 #' @return Average power estimate for multiple testing procedure
 #' @examples
-#'\dontrun{
 #' set.seed(1234);
-#' p1 = sample(seq(0,0.5,0.1),10,replace = TRUE);
-#' p2 = sample(seq(0.5,1,0.1),10,replace = TRUE);
+#' p1 = sample(seq(0,0.5,0.1),5,replace = TRUE);
+#' p2 = sample(seq(0.5,1,0.1),5,replace = TRUE);
 #' average.power.fisher(p1 = p1,p2 = p2,n = 20,alpha = 0.05,alternative = "two.sided")
-#' }
 #' @importFrom stats dbinom fisher.test
 #' @export
 average.power.fisher <- function(p1, p2, n, alpha, alternative)

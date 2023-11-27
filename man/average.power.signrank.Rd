@@ -4,14 +4,16 @@
 \alias{average.power.signrank}
 \title{Compute average power of many signed-rank tests}
 \usage{
-average.power.signrank(n, alpha, p)
+average.power.signrank(n, alpha, p1, p2)
 }
 \arguments{
 \item{n}{sample size (scalar)}
 
 \item{alpha}{p-value threshold (scalar)}
 
-\item{p}{Pr(Y>X), as in Noether (JASA 1987)}
+\item{p1}{Pr(X>0), as in Noether (JASA 1987)}
+
+\item{p2}{Pr(X+X'>0), as in Noether (JASA 1987)}
 }
 \value{
 Average power estimate for multiple testing procedure
@@ -20,6 +22,7 @@ Average power estimate for multiple testing procedure
 Compute average power of many signed-rank tests
 }
 \examples{
-p = rep(c(0.8,0.5),c(100,900));
-average.power.signrank(n = 50, alpha = 0.05, p = p)
+p1 = rep(c(0.8,0.5),c(100,900));
+p2 = rep(c(0.8,0.5),c(100,900));
+average.power.signrank(n = 50, alpha = 0.05, p1 = p1, p2 = p2)
 }

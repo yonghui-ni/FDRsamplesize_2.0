@@ -36,10 +36,8 @@ A list with the following components:
 Find the sample size needed to have a desired false discovery rate and average power for a large number of Fisher's exact tests.
 }
 \examples{
-\dontrun{
 set.seed(1234);
 p1 = sample(seq(0,0.5,0.1),10,replace = TRUE);
 p2 = sample(seq(0.5,1,0.1),10,replace = TRUE);
 n.fdr.fisher(fdr = 0.1, pwr = 0.8, p1 = p1, p2 = p2, alternative = "two.sided", pi0.hat = "BH")
-}
 }

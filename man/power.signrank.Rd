@@ -4,14 +4,16 @@
 \alias{power.signrank}
 \title{Compute power of the signed-rank test}
 \usage{
-power.signrank(n, alpha, p)
+power.signrank(n, alpha, p1, p2)
 }
 \arguments{
 \item{n}{sample size (scalar)}
 
 \item{alpha}{p-value threshold (scalar)}
 
-\item{p}{Pr(Y>X), as in Noether (JASA 1987)}
+\item{p1}{Pr(X>0), as in Noether (JASA 1987)}
+
+\item{p2}{Pr(X+X'>0), as in Noether (JASA 1987)}
 }
 \value{
 Vector of power estimates for two-sided tests
@@ -23,8 +25,9 @@ Use the Noether (1987) formula to compute the power of the signed-rank test
 In most applications, the null effect size will be designated by p = 0.5
 }
 \examples{
-p = rep(c(0.8,0.5),c(100,900));
-res = power.signtest(n = 50, alpha = 0.05, p = p)
+p1 = rep(c(0.8,0.5),c(100,900));
+p2 = rep(c(0.8,0.5),c(100,900));
+res = power.signrank(n = 50, alpha = 0.05, p1 = p1, p2 = p2)
 }
 \references{
 Noether, Gottfried E (1987) Sample size determination for some common nonparametric tests. Journal of the American Statistical Association, 82:645-647.

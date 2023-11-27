@@ -24,10 +24,8 @@ Average power estimate for multiple testing procedure
 Compute average power of many Fisher's exact tests
 }
 \examples{
-\dontrun{
 set.seed(1234);
-p1 = sample(seq(0,0.5,0.1),10,replace = TRUE);
-p2 = sample(seq(0.5,1,0.1),10,replace = TRUE);
+p1 = sample(seq(0,0.5,0.1),5,replace = TRUE);
+p2 = sample(seq(0.5,1,0.1),5,replace = TRUE);
 average.power.fisher(p1 = p1,p2 = p2,n = 20,alpha = 0.05,alternative = "two.sided")
-}
 }

@@ -110,12 +110,10 @@ n.fdr.twoprop <- function(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat =
 #' \item{n0}{lower limit for initial sample size range}
 #' \item{n1}{upper limit for initial sample size range}
 #' @examples
-#' \dontrun{
 #' set.seed(1234);
 #' p1 = sample(seq(0,0.5,0.1),10,replace = TRUE);
 #' p2 = sample(seq(0.5,1,0.1),10,replace = TRUE);
 #' n.fdr.fisher(fdr = 0.1, pwr = 0.8, p1 = p1, p2 = p2, alternative = "two.sided", pi0.hat = "BH")
-#' }
 #' @export
 n.fdr.fisher <- function(fdr, pwr, p1, p2, alternative = "two.sided", pi0.hat = "BH") {
   pi0 <- mean(p1 == p2)
@@ -190,7 +188,8 @@ n.fdr.poisson <- function(fdr, pwr, rho, mu0, w, type, pi0.hat = "BH") {
 #' Find the sample size needed to have a desired false discovery rate and average power for a large number of signed-rank tests.
 #' @param fdr desired FDR (scalar numeric)
 #' @param pwr desired average power (scalar numeric)
-#' @param p Pr(Y>X), as in Noether (JASA 1987)
+#' @param p1 Pr(X>0), as in Noether (JASA 1987)
+#' @param p2 Pr(X+X'>0), as in Noether (JASA 1987)
 #' @param pi0.hat approximation method for null proportion
 #' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
@@ -205,13 +204,14 @@ n.fdr.poisson <- function(fdr, pwr, rho, mu0, w, type, pi0.hat = "BH") {
 #' \item{n1}{upper limit for initial sample size range}
 #' @references Noether, Gottfried E (1987) Sample size determination for some common nonparametric tests. Journal of the American Statistical Association, 82:645-647.
 #' @examples
-#' p = rep(c(0.8,0.5),c(100,900));
-#' n.fdr.signrank(fdr = 0.1, pwr = 0.8, p = p, pi0.hat = "BH")
+#' p1 = rep(c(0.8,0.5),c(100,900));
+#' p2 = rep(c(0.8,0.5),c(100,900));
+#' n.fdr.signrank(fdr = 0.1, pwr = 0.8, p1 = p1, p2 = p2, pi0.hat = "BH")
 #' @export
-n.fdr.signrank <- function(fdr, pwr, p, pi0.hat = "BH") {
-  pi0 <- mean(p == 0.25)
+n.fdr.signrank <- function(fdr, pwr, p1, p2, pi0.hat = "BH") {
+  pi0 <- length(intersect(which(p1 == 0.5),which(p2 == 0.5)))/length(p1)
   a <- alpha.power.fdr(fdr, pwr, pi0, pi0.hat)
-  res <- find.sample.size(alpha = a, pwr = pwr, avepow.func = average.power.signrank, p = p)
+  res <- find.sample.size(alpha = a, pwr = pwr, avepow.func = average.power.signrank, p1 = p1, p2 = p2)
   res$desired.fdr=fdr
   res$input.pi0=pi0
   res.names=c("n",
@@ -233,7 +233,7 @@ n.fdr.signrank <- function(fdr, pwr, p, pi0.hat = "BH") {
 #' Find the sample size needed to have a desired false discovery rate and average power for a large number of sign tests.
 #' @param fdr desired FDR (scalar numeric)
 #' @param pwr desired average power (scalar numeric)
-#' @param p Pr(Y>X), as in Noether (JASA 1987)
+#' @param p Pr(X>0), as in Noether (JASA 1987)
 #' @param pi0.hat approximation method for null proportion
 #' @return  A list with the following components:
 #' \item{n}{a sample size estimate}
