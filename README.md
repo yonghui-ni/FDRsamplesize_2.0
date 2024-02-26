@@ -149,7 +149,7 @@ include:
 - p-value histogram height (HH)
 - p-value histogram mean (HM)
 
-## package update
+## package updates
 
 - 0.2.0 version:
 
