@@ -1,7 +1,7 @@
 Package: FDRsamplesize2
 Type: Package
 Title: Computing Power and Sample Size for the False Discovery Rate in Multiple Applications
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: 
   c(person(given = "Yonghui",
            family = "Ni",
