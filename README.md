@@ -148,3 +148,13 @@ include:
 - Jung 2005 (Jung)
 - p-value histogram height (HH)
 - p-value histogram mean (HM)
+
+## package update
+
+- 0.2.0 version:
+
+add fdr.avepow() to compute FDR and average power for a given sample
+size and effect size vector;
+
+add fdr.power.alpha() to compute FDR for given p-value threshold,
+average power and proportion of tests with a true null
