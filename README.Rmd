@@ -51,7 +51,7 @@ install.packages("FDEsamplesize2")
 load the package
 
 ``` {r}
-library("FDRsamplesize2")
+library(FDRsamplesize2)
 ``` 
 
 ## Example
