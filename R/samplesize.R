@@ -583,7 +583,7 @@ find.sample.size <- function(alpha, pwr, avepow.func, n0 = 3, n1 = 6, max.its = 
 #' @return The fixed p-value threshold for multiple testing procedure
 #' @details
 #' To get the fixed p-value threshold for multiple testing procedure, 4 approximation methods are provided, they are Benjamini & Hochberg procedure (1995), Jung's formula (2005),
-#' method of using p-value histogram height (HH) and method of using p-value histogram mean (HM). For last two methods' details, see Ni Y, Onar-Thomas A, Pounds S.  "Computing Power and Sample Size for the False Discovery Rate in Multiple Applications"
+#' method of using p-value histogram height (HH) and method of using p-value histogram mean (HM). For last two methods' details, see Ni Y, Seffernick AE, Onar-Thomas A, Pounds SB. Computing Power and Sample Size for the False Discovery Rate in Multiple Applications.
 #' @references
 #' Pounds S and Cheng C, "Sample size determination for the false discovery rate." Bioinformatics 21.23 (2005): 4263-4271.
 #'
@@ -591,7 +591,7 @@ find.sample.size <- function(alpha, pwr, avepow.func, n0 = 3, n1 = 6, max.its = 
 #'
 #' Jung,Sin-Ho."Sample size for FDR-control in microarray data analysis." Bioinformatics 21.14 (2005): 3097-3104.
 #'
-#' Ni Y, Seffernick A, Onar-Thomas A, Pounds S.  "Computing Power and Sample Size for the False Discovery Rate in Multiple Applications", Manuscript.
+#' Ni Y, Seffernick AE, Onar-Thomas A, Pounds SB. Computing Power and Sample Size for the False Discovery Rate in Multiple Applications. Genes. 2024; 15(3):344. https://doi.org/10.3390/genes15030344
 #'
 #' @examples
 #' alpha.power.fdr(fdr = 0.1, pwr = 0.9, pi0=0.9, method = "HH")
@@ -661,7 +661,7 @@ alpha.power.fdr <- function(fdr, pwr, pi0, method = "HH") {
 #'
 #' Jung,Sin-Ho."Sample size for FDR-control in microarray data analysis." Bioinformatics 21.14 (2005): 3097-3104.
 #'
-#' Ni Y, Seffernick A, Onar-Thomas A, Pounds S.  "Computing Power and Sample Size for the False Discovery Rate in Multiple Applications", Manuscript.
+#' Ni Y, Seffernick AE, Onar-Thomas A, Pounds SB. Computing Power and Sample Size for the False Discovery Rate in Multiple Applications. Genes. 2024; 15(3):344. https://doi.org/10.3390/genes15030344
 #'
 #' @examples
 #' n = 50; # number of events
@@ -722,7 +722,7 @@ fdr.avepow=function(n,                 # sample size
 #'
 #' Jung,Sin-Ho."Sample size for FDR-control in microarray data analysis." Bioinformatics 21.14 (2005): 3097-3104.
 #'
-#' Ni Y, Seffernick A, Onar-Thomas A, Pounds S.  "Computing Power and Sample Size for the False Discovery Rate in Multiple Applications", Manuscript.
+#' Ni Y, Seffernick AE, Onar-Thomas A, Pounds SB. Computing Power and Sample Size for the False Discovery Rate in Multiple Applications. Genes. 2024; 15(3):344. https://doi.org/10.3390/genes15030344
 #'
 #' @examples
 #' alpha = 1:100/1000;
