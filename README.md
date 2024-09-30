@@ -40,10 +40,9 @@ install.packages("FDRsamplesize2")
 
 ## Load package
 
-load the package
-
 ``` r
-library("FDRsamplesize2")
+library(FDRsamplesize2)
+#> Warning: package 'FDRsamplesize2' was built under R version 4.3.3
 ```
 
 ## Example
@@ -93,9 +92,9 @@ res
 #> [1] 50
 ```
 
-Step by step to calculate power and sample size. This procedure is more
-flexible for user to plug in average power function of other statistical
-tests that are not available in *FDRsamplesize2*.
+Or you can calculate power and sample size step by step. This procedure
+is more flexible for user to plug in average power function of other
+statistical tests that are not available in *FDRsamplesize2*.
 
 ``` r
 pi0=9900/10000                      # proportion of true null hypothesis
@@ -149,7 +148,7 @@ include:
 - p-value histogram height (HH)
 - p-value histogram mean (HM)
 
-## package updates
+## Package updates
 
 - 0.2.0 version:
 
@@ -158,3 +157,9 @@ size and effect size vector;
 
 add fdr.power.alpha() to compute FDR for given p-value threshold,
 average power and proportion of tests with a true null
+
+## Publication
+
+Ni Y, Seffernick AE, Onar-Thomas A, Pounds SB. Computing Power and
+Sample Size for the False Discovery Rate in Multiple Applications.
+Genes. 2024; 15(3):344. <https://doi.org/10.3390/genes15030344>
